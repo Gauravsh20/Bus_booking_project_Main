@@ -8,6 +8,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="payment_detail")
@@ -37,6 +41,18 @@ public class PaymentDetail {
 	@Enumerated(EnumType.STRING)
 	@Column(name="Paytype")
 	private PaymentType paytype;
+	
+	@CreationTimestamp
+	@Column(name="paymate_date")
+	private Date paydate;
+
+	public Date getPaydate() {
+		return paydate;
+	}
+
+	public void setPaydate(Date paydate) {
+		this.paydate = paydate;
+	}
 
 	public PaymentType getPaytype() {
 		return paytype;

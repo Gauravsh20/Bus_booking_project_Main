@@ -125,6 +125,33 @@ public class TravelscheduleDAO {
 		List<TravelscheduleMain> travelList = cr.list();
 		return travelList.get(0);
 	}
-
+	public String deleteTs(String scheduleid) {
+        sessionFactory = SessionHelper.getConnection();
+        Session session = sessionFactory.openSession();
+        TravelscheduleMain ts=SearchTravelId(scheduleid);
+        Transaction t = session.beginTransaction();
+        
+   try {
+       session.delete(ts);
+        t.commit();
+        return "Deleted Sucessfully  ";
+    
+    }catch(Exception e) {
+        e.printStackTrace();
+        return ("Record NOt Delete. "+e.getMessage());
+    }
+   
+      
+   }
+	 public List<Booking> showBooking() {
+	        sessionFactory = SessionHelper.getConnection();
+	        Session session=sessionFactory.openSession();
+	        Query query = session.createQuery("from Booking");
+	        Criteria cr = session.createCriteria(Booking.class);
+	        List<Booking> BookingList=query.list();
+	        return BookingList;
+	        
+	    }
+	
 	
 }

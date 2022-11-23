@@ -1,15 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<title>Login Form</title>
+<jsp:include page="AdminUser.jsp"/>
+<script type="text/javascript">
+var setInterval_ID = setInterval(my_alert_func, 2000);
+
+function my_alert_func()
+{
+	document.getElementById("error").innerHTML=null;
+}
+</script>
 <body>
 <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
-<form method="get" action="">
+<form method="get" action="" class="text mt-5">
 <center>
 		Enter Name :
 		<input type="text" name ="driver_name"/><br/><br/>
@@ -17,14 +19,14 @@
 		<input type="text" name ="driver_lic_no"/><br/><br/>
 		Enter contact-no :
 		<input type="number" name ="contact_no"/><br/><br/>
-		<input type="submit" value ="Insert"/><br/><br/>
+		<button type="button" class="btn btn-primary">Insert</button><br/><br/>
 	</center>
 	
 <c:if test="${param.driver_name!= null && param.driver_lic_no != null}" >
 	<jsp:useBean id="beanDriverDetailsDAO" class="Training.BusBookingProject.BusDAO" />
 	<jsp:useBean id="beanDriverDetails" class="Training.BusBookingProject.DriverDetails" />
 	<jsp:setProperty property="*" name="beanDriverDetails" />
-	<c:out value="${beanDriverDetailsDAO.addDriver(beanDriverDetails)}"/>
+	<h4 class="text text-danger text-center" id="error"><c:out value="${beanDriverDetailsDAO.addDriver(beanDriverDetails)}"/></h4>
 </c:if>
 </form>
 </body>

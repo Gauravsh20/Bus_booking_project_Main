@@ -1,48 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script type="text/javascript">
+
+   // Get the Interval ID
+ var setInterval_ID = setInterval(my_alert_func, 2000);
+
+ function my_alert_func()
+ {
+   alert('I am an alert message appear in every 3 seconds');
+ }
+
+   // Set timeout to call stop_interval function after 12 seconds
+   setTimeout(stop_interval, 12000);
+
+   function stop_interval()
+   {
+     clearInterval(setInterval_ID);
+   }
+   </script>
 </head>
-<script src="js/jquery-3.5.1.js"></script>
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(function(){
-	$("#amt").blur(function(){
-		var tamt=$("#tamt").val();
-		var userid=$("#userid").val();
-		alert (tamt);  
-		$.post("Verify",
-				{"userid":userid},
-				function(output){
-					if(output.trim()=="no"){
-						alert ("Please try again"); 
-						$(".msg").html();
-						$("#userid").val("");
-					}
-					else{
-						alert ("Please again"); 
-						$(".msg").html("Username available");
-					}
-				});
-	
-	
-	});
-
-	
-});
-</script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <body>
-<select id="tamt">
-<option value="PHONE_PAY">GPay</option>
-<option value="GOOGLE_PAY">Phone_pe</option>
-<option>Paytm</option>
-</select>
-<input type="text" id="userid">
-</body>
+
 </html>

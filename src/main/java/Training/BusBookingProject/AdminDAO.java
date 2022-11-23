@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 public class AdminDAO {
@@ -33,7 +34,29 @@ public class AdminDAO {
 		
 		
 	}
-	 
+	//id=name,new=newpassword
+		public String ForgetPwd(String id,String newpass){
+			 sessionFactory = SessionHelper.getConnection();
+		     Session session = sessionFactory.openSession();
+		     Admin admin=Searchid(id);
+		     int aid=admin.getAdminId();
+		     Query q=session.createQuery("Update Admin SET password=:np WHERE adminId =:id").setParameter("np",newpass).setParameter("id",aid);
+			 Transaction trans = session.beginTransaction();
+			 q.executeUpdate();
+			 trans.commit();
+			return "password changed";
+			
+		}
+		 
+		public Admin Searchid(String adminName){
+			 sessionFactory = SessionHelper.getConnection();
+		     Session session = sessionFactory.openSession();
+		    // Query query = session.createQuery("from Admin where admin=:u").setParameter("u", adminid);
+		     Criteria cr = session.createCriteria(Admin.class);
+		     cr.add(Restrictions.eq("adminName",adminName));
+			 List <Admin> adminList=cr.list();
+			 return adminList.get(0);       
+		}
 
 
 

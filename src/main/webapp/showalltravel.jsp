@@ -69,7 +69,6 @@ function myFunction() {
 	 <form method="get" action="">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.TravelscheduleDAO"/>
           <div class="heading">
-          <h1>Show All Travels</h1>  
           </div>
           
                

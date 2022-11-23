@@ -12,5 +12,6 @@
     <c:set var ="id" value="${param.id}"/>
     <c:out value="${id}"/>
     <c:out value="${dao.deleteDriver(id)}"/>
+    <c:redirect url="ShowDriver.jsp?id=${userid}"/>
 </body>
 </html>

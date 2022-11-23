@@ -15,12 +15,8 @@ public class Wallet {
 	@Column(name="wallet_id")
 	private String walletId;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name="Wallet_Type")
-	private WalletType walletType;
-	
 	@Column(name="WalletAmount")
-	private float walletAmount;
+	private double walletAmount;
 	
 	@Column(name="user_id")
 	private String userId;
@@ -32,16 +28,11 @@ public class Wallet {
 	public void setWalletId(String walletId) {
 		this.walletId = walletId;
 	}
-	public WalletType getWalletType() {
-		return walletType;
-	}
-	public void setWalletType(WalletType walletType) {
-		this.walletType = walletType;
-	}
-	public float getWalletAmount() {
+	
+	public double getWalletAmount() {
 		return walletAmount;
 	}
-	public void setWalletAmount(float walletAmount) {
+	public void setWalletAmount(double walletAmount) {
 		this.walletAmount = walletAmount;
 	}
 	public String getUserId() {

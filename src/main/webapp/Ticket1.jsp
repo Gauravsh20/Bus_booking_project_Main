@@ -115,7 +115,7 @@ margin-left: 50%;
    						 </tr>
    						  <tr>
       					      <th scope="col" colspan="2">Boarding Address : <label class="text-capitalize"><c:out value="${addressstrat}"/></label></th>
-      					      <th scope="col">Total Amount : <label class="text-capitalize"><c:out value="${totalamt}"/><label class="text-capitalize"></th>
+      					      <th scope="col">Total Amount : <label class="text-capitalize"><c:out value="${totalamt}"/></label></th>
    						 </tr>
    						 
    						 

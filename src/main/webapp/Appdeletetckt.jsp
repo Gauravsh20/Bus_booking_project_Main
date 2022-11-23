@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:useBean id="UserDAO" class="Training.BusBookingProject.PaymentDAO"/>
-<c:set var="bid" value="${param.Bookedid}"/>
-<c:out value="${param.Bookedid}"/>
-<c:out value="${UserDAO.BookingDelete(bid)}"/>
-<c:redirect url="ApprvdTickets.jsp?userid=${param.userid}"/>
+	<jsp:useBean id="paymentDAO" class="Training.BusBookingProject.PaymentDAO"/>
+	<c:set var="bid" value="${param.Bookedid}"/>
+	<c:out value="${param.Bookedid}"/>
+	<c:out value="${paymentDAO.BookingDelete(bid)}"/>
+	<c:redirect url="ApprvdTickets.jsp?userid=${param.userid}"/>
 
 </body>
 </html>

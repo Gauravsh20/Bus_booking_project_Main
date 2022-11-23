@@ -1,67 +1,39 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-</head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<title>Login Form</title>
+<jsp:include page="AdminUser.jsp"/>
 <style>
-body{
-
+thead{
+background-color:F5BDB1;
 }
-table {
-	 border-collapse: collapse;
-}
-.heading{
-text-align:center;
-font-family: cursive;
-}
-th, td {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-tr:hover {
-
-background-color: #D0EEE1;
-}
-
-th {
-  background-color: #04AA6D;
-  color: white;
-}
-
-
 </style>
-
 <body>
    <form method="get" action="ShowTSchedule.jsp">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.TravelscheduleDAO"/>
           <div class="heading">
-          <h1>Show All TravelSchedule</h1>  
-      		<button class="btn btn-success m-5"><a href="TravelScheduleAI.jsp">Add</a></button>
+           <h1 class="text-center">Show All TravelSchedule</h1>   
+             <h6 class="text-danger text-center">**Someitems Not Delete, So it's Running the Travel </h6> 
+      		<a href="TravelScheduleAI.jsp"><button class="btn btn-success m-5" type="button">Add</button></a>
           </div>
           
                
-         <table border="3" align="center">
+         <table border="3" align="center" class="table-bordered table-hover w-100 h-50">
+         <thead class="text-capitalize text-center">
             <tr>
-              <th>scheduleid</th>
-              <th>busid</th>
-              <th>driverid</th>
-              <th>startingpoint</th>
-              <th>destinationpoint</th>
-              <th>scheduledate</th>
-              <th>departuretime</th>
-              <th>estimatearrivaldate</th>
-              <th>estimatearrivaltime</th>
-              <th>fareamount</th>
-              <th>remark</th>
+              <th> Schedule Id </th>
+              <th> Bus Id </th>
+              <th>Driver Id</th>
+              <th>Starting Point</th>
+              <th>Destination Point</th>
+              <th>Schedule Date</th>
+              <th>Departure Time</th>
+              <th>Estimatearrival Date</th>
+              <th>Estimatearrival Time</th>
+              <th>Fare Amount</th>
+              <th>Remark</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
+          </thead>  
            <c:forEach var="showBus" items="${beanDao.showTSchedule(ts)}" >
               <tr>
                  <td><c:out value="${showBus.scheduleid}"/></td>
@@ -75,6 +47,8 @@ th {
                  <td><c:out value="${showBus.estimatearrivaltime}"/></td>
                  <td><c:out value="${showBus.fareamount}"/></td>
                  <td><c:out value="${showBus.remark}"/></td>
+                 <td><button class="btn btn-success" type="button">Update</button></td>
+                 <td><a href="DeleteTS.jsp?id=${showBus.scheduleid}"><button class="btn btn-danger" type="button">Delete</button></a></td>
               </tr>
            </c:forEach>   
          </table>

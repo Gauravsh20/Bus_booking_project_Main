@@ -1,12 +1,19 @@
-<%@page import="Training.BusBookingProject.UserDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="UserHeader.jsp"/>
-<title>Insert title here</title>
-</head>
+<title>Login Form</title>
+<jsp:include page="AdminUser.jsp"/>
+<style>
+table{
+margin-top: 5ex;
+}
+thead{
+background-color:F5BDB1;
+}
+</style>
 <body>
-    <form method="get" action="ShowRefund.jsp">
+<h1 class="text-center">Show All Refunds</h1>  
       <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
       <table border="3" align="center">
+      <thead>
         <tr>
           <th>RefundId</th>
           <th>PaymentId</th>
@@ -15,9 +22,10 @@
           <th>Amount</th>
           <th>RefundDate</th>
           <th>RefundStatus</th>
+          <th>Approved</th>
          </tr>
-         
-         <c:forEach var="showRefund" items="${beanDao.showRefund(refund)}">
+       </thead>  
+         <c:forEach var="showRefund" items="${beanDao.showRefund()}">
            <tr>
              <td><c:out value="${showRefund.refundId}"/></td>
              <td><c:out value="${showRefund.paymentId}"/></td>
@@ -25,11 +33,25 @@
              <td><c:out value="${showRefund.walletId}"/></td>
              <td><c:out value="${showRefund.amount}"/></td>
              <td><c:out value="${showRefund.refundDate}"/></td>
-             <td><c:out value="${showRefund.refundStatus}"/></td>
+             <td>
+             <c:if test="${showRefund.refundStatus!='SUCCESSFULL'}">
+             	<h5 class="text-danger font-weight-bold"><c:out value="${showRefund.refundStatus}"/></h5>
+             </c:if>
+             <c:if test="${showRefund.refundStatus=='SUCCESSFULL'}">
+             	<h5 class="text-success font-weight-bold"><c:out value="${showRefund.refundStatus}"/></h5>
+             </c:if>
+             </td>
+             <td>
+             <c:if test="${showRefund.refundStatus!='SUCCESSFULL'}">
+             		<a href="refundapp.jsp?refundid=${showRefund.refundId}"><button class="btn btn-success" type="button">Approved</button></a>
+             </c:if>	
+             </td>
             <tr> 
-         
          </c:forEach>  
       </table>
-    </form>
+
+
+
+
 </body>
 </html>

@@ -9,9 +9,11 @@
 </head>
 <body>
 
-<jsp:useBean id="dao" class="Training.BusBookingProject.BusDAO"/>
-    <c:set var="bid" value="${param.id}"/>
-   	<c:out value="${dao.deleteBus(bid)}"/>
-   	 <c:redirect url="ShowBus.jsp?"/>
+   <jsp:useBean id="dao" class="Training.BusBookingProject.TravelscheduleDAO"/>
+    <c:set var ="id" value="${param.id}"/>
+    <c:out value="${id}"/>
+    <c:out value="${dao.deleteTs(id)}"/>
+    <c:redirect url="ShowTSchedule.jsp"/>
+
 </body>
 </html>

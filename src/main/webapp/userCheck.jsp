@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Login Form</title>
-<jsp:include page="HeaderHm.jsp"/>
 <link rel="stylesheet" href="Css/FormDetail.css">
-<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<jsp:include page="HeaderHm.jsp"/>
+<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"> </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"> </script>
 <h1 id="">User Login</h1>
 
 <div class="container-fluid">
@@ -36,8 +36,6 @@
 	</div>		
 </div>
 </div>
-
-
 <c:if test="${param.username!=null &&param.password!=null}"/>
 <jsp:useBean id="users" class="Training.BusBookingProject.User"/>
 <jsp:setProperty property="*" name="users"/>
@@ -46,8 +44,8 @@
 <c:set var="pwd" value="${param.password }"/>
 <c:set var="cnt" value="${dao.checkUsers(user,pwd)}"/>
 <c:forEach  var="ss" items="${dao.checkUsers(user,pwd)}">
-	<c:set var="id" value="${ss.userid}"/>
-	<c:redirect url="UserHome.jsp?userid=${ss.userid}"/> 
+	<c:set var="userid" value="${ss.userid}" scope="session" />
+	<c:redirect url="UserHome.jsp?userid=${userid}"/> 
 </c:forEach>
 </body>
 </html>

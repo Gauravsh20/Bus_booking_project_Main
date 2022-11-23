@@ -1,40 +1,9 @@
-<%@page import="Training.BusBookingProject.BusDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-</head>
+<title>Login Form</title>
+<jsp:include page="AdminUser.jsp"/>
 <style>
-body{
-
-}
-table {
-	 border-collapse: collapse;
-}
-.heading{
-text-align:center;
-font-family: cursive;
-}
-th, td {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-tr:hover {
-
-background-color: #D0EEE1;
-}
-
-th {
-  background-color: #04AA6D;
-  color: white;
+thead{
+background-color:F5BDB1;
 }
 </style>
 
@@ -42,12 +11,14 @@ th {
      <form method="get" action="ShowBus.jsp">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
           <div class="heading">
-          <h1>Show All Bus's</h1>  
-      		<a href="AddBus.jsp"><button type="button" class="btn btn-success m-5">Add Bus</button></a>
+          <h1 class="text-center">Show All Bus's</h1>  
+      		<a href="AddBus.jsp"><button type="button" class="btn btn-success m-3">Add Bus</button></a>
+      		<h6 class="text-danger text-center">** Booked Bus Not Deleted </h6> 
           </div>
           
                
-         <table border="3" align="center">
+         <table border="3" align="center" class="table-hover w-75 text-center">
+         <thead class="thead-dark">
             <tr>
               <th>BusId</th>
               <th>BusNo</th>
@@ -58,6 +29,7 @@ th {
               <th>Update</th>
               <th>Delete</th>
             </tr>
+            </thead>
            <c:forEach var="showBus" items="${beanDao.showBus(bus)}" >
               <tr>
                  <td><c:out value="${showBus.busId}"/></td>
@@ -65,9 +37,16 @@ th {
                  <td><c:out value="${showBus.busType}"/></td>
                  <td><c:out value="${showBus.serviesType}"/></td>
                  <td><c:out value="${showBus.noOfSeats}"/></td>
-                  <td><c:out value="${showBus.busstatus}"/></td>
-                 <td><button class="btn btn-outline-success" ><a href="UpdateBus.jsp">Update</a></</button></td>               
-                 <td><button class="btn btn-outline-danger" ><a href="BusDelete.jsp?id=${showBus.busId}">Delete</a></button></td>
+                 <c:if test="${showBus.busstatus=='BOOKED'}">
+                 	<td class="text-danger font-weight-bold text-center"><c:out value="${showBus.busstatus}"/></td>
+                 
+                 
+                 </c:if>
+                 <c:if test="${showBus.busstatus!='BOOKED'}">
+                 	<td class="text-success font-weight-bold text-center"><c:out value="${showBus.busstatus}"/></td>
+                 </c:if>
+                 <td><a href="UpdateBus.jsp?bsid=${showBus.busId}&status=${showBus.busstatus}"><button class="btn btn-success" type="button">Update</button></a></td>             
+                 <td class="text-danger font-weight-bold text-center"><a href="BusDelete.jsp?id=${showBus.busId}"><button class="btn btn-danger" type="button">Delete</button></a></td>
               </tr>
            </c:forEach>   
          </table>

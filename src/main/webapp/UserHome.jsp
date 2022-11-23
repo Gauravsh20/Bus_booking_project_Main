@@ -12,7 +12,7 @@
 			<a href="ApprvdTickets.jsp?userid=${param.userid}"><button class="btn" id="funcbtn" style="background-color: #faf284" type="button"><h2>Ticket's</h2> </button>
 		</div>
 		<div class="col-3 p-0">
-			<a href="ShowRefund.jsp?userid=${param.userid}"><button class="btn" id="funcbtn" style="background-color: #84ccfa" type="button"><h2>Refund's</h2></button>
+			<a href="UserRefund.jsp?userid=${param.userid}"><button class="btn" id="funcbtn" style="background-color: #84ccfa" type="button"><h2>Refund's</h2></button>
 		</div>
 	</div>
 </div>

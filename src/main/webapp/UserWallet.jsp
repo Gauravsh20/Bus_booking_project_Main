@@ -9,18 +9,8 @@
  <div class="container-fluid text-center"> 
  	<div class="row">
  		<div class="col-12">
- 		<form method="get" action="">
-
-       <div class="heading">
-          </div>
+ 		<form>
           
-        Wallet Type :
-          <select name="walletType">
-               <option value="PHONE_PAY">PHONE_PAY</option>
-               <option value="GOOGLE_PAY">GOOGLE_PAY</option>
-               <option value="PAYTM">PAYTM</option>
-               <option value="CASH">CASH</option>
-          </select> <br/><br/>
         Wallet Amount :
           <input type="number" name="walletAmount"/> <br/><br/> 
        User Id :
@@ -30,12 +20,10 @@
      </form>
      <c:if test="${param.walletAmount!=null}">
            <jsp:useBean id="bean" class="Training.BusBookingProject.UserDAO"/>
-           <jsp:useBean id="beanWallet" class="Training.BusBookingProject.Wallet"/>
-           <jsp:setProperty property="walletType" name="beanWallet" value="${param.walletType}"/>
-           <jsp:setProperty property="walletAmount" name="beanWallet" value="${param.walletAmount}"/>
-           <jsp:setProperty property="userId" name="beanWallet" value="${param.userId}"/>
-           <c:out value="${bean.addWallet(beanWallet)}"/>
-           <c:redirect url="ShowWallet.jsp?userid=${param.userId}"></c:redirect>
+           <c:set var="amount" value="${param.walletAmount}"/>
+           <c:set var="user" value="${param.userId}"/>
+           ${bean.addWallet(user, amount)}
+           <c:redirect url="ShowWallet.jsp?userid=${user}"/>
           </c:if>
   
  		</div>

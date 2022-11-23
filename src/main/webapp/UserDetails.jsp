@@ -20,11 +20,20 @@ $(function(){
 	});
 });
 </script>
+<style>
+lottie-player{
+margin-top:-10ex;
+margin-left:-20ex;
+}
+
+
+</style>
+
 <h1 id="">New User Details</h1>
 <div class="container-fluid">
 <div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
 <div class="row">
-	<div class="col-7 ">
+	<div class="col-7">
 	<form method="post" action="" name="myForm">	
 	<div class="row">
 		<div class="col-30">
@@ -95,9 +104,11 @@ $(function(){
 		<c:set var="out" value="${beanDao.Adduser(users)}"/>
 	</c:if>
 	<div class="col-5">
-			<img src="./image/busgif.gif" id="gg" alt="Italian Trulli"></div>		
-	
-	</div>		
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_fgvmiyev.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;"  loop  autoplay></lottie-player>		
+	</div>	
+	        
+        	
 </div>
 
 </body>

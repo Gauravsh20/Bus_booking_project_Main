@@ -34,19 +34,19 @@
      <c:forEach var="showBus" items="${UserDAO.Final_ticket(uu)}" >
     <tr>
     			
-                 <td><h4><c:out value="${showBus.seatNo}"/></h4></td>
-                 <td><c:out value="${showBus.bKdate}"/></td>
-                 <td><c:out value="${showBus.pname}"/></td>
-                 <td><c:out value="${showBus.page}"/></td>
-                 <td><c:out value="${showBus.pgender}"/></td>
-                 <td><c:out value="${showBus.totalAmount}"/></td>
-               	 <td>
-          			<a href="Appdeletetckt.jsp?Bookedid=${showBus.bookingId}&userid=${param.userid}" onclick="fun()"><button class="btn btn-danger">Cancel</button></a>  
-      			</td>
-      			 <td>
-      			<a href="Ticket1.jsp?bookingId=${showBus.bookingId}"><button class="btn btn-success">Download</button></a>
-      			</td>
-      			<!-- <button onclick="window.print();">Print me</button> -->
+          <td><h4><c:out value="${showBus.seatNo}"/></h4></td>
+          <td><c:out value="${showBus.bKdate}"/></td>
+          <td><c:out value="${showBus.pname}"/></td>
+          <td><c:out value="${showBus.page}"/></td>
+          <td><c:out value="${showBus.pgender}"/></td>
+          <td><c:out value="${showBus.totalAmount}"/></td>
+        	 <td>
+   			<a href="Appdeletetckt.jsp?Bookedid=${showBus.bookingId}&userid=${param.userid}" onclick="fun()"><button class="btn btn-danger">Cancel</button></a>  
+		</td>
+		 <td>
+		<a href="Ticket1.jsp?bookingId=${showBus.bookingId}"><button class="btn btn-success">Download</button></a>
+		</td>
+		<!-- <button onclick="window.print();">Print me</button> -->
     </tr>
     </c:forEach>
       </c:if>

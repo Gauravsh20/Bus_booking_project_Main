@@ -30,7 +30,7 @@ public class BusDAO {
 		
 	}
 	
-	public List<Refund> showRefund(String refund){
+	public List<Refund> showRefund(){
 		sessionFactory = SessionHelper.getConnection();
 		Session session=sessionFactory.openSession();
 		Query query = session.createQuery("from Refund");

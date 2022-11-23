@@ -61,7 +61,7 @@ padding-top:3ex;
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="Adminheader.jsp">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"></a>
@@ -76,7 +76,6 @@ padding-top:3ex;
     </div>
   </div>
 </nav>
-
 <div class="container-fluid">
 	<div class="row" id="mainbtn">
 		<div class="col-3 ">
@@ -94,16 +93,13 @@ padding-top:3ex;
 	</div>
 	<div class="row" id="mainbtn">
 		<div class="col-3 ">
-			<a href=""><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Payments</h2></button></a>
+			<a href="showPayment.jsp"><button class="btn" id="funcbtn" style="background-color: #caf75f" type="button"><h2>Payments</h2></button></a>
 		</div>
 		<div class="col-3">
-			<button class="btn" id="funcbtn" style="background-color: #caf75f" type="button"><h2>Wallets</h2></button>
-		</div>
-		<div class="col-3">
-			<a href="ShowRefund.jsp"><button class="btn" id="funcbtn" style="background-color: #faf284" type="button"><h3>Refunds</h3> </button></a>
+			<a href="Showrefund.jsp"><button class="btn" id="funcbtn" style="background-color: #faf284" type="button"><h3>Refunds</h3> </button></a>
 		</div>
 		<div class="col-3 p-0">
-			<button class="btn" id="funcbtn" style="background-color: #84ccfa" type="button"><h2>Booking's</h2></button>
+			<a href="ShowBooking.jsp"><button class="btn" id="funcbtn" style="background-color: #84ccfa" type="button"><h2>Booking's</h2></button></a>
 		</div>
 	</div>
 </div>

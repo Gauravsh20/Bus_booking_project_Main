@@ -1,13 +1,14 @@
-<%@page import="Training.BusBookingProject.UserDAO"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="UserHeader.jsp"/>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<c:set value="${param.id}" var="uu"/>
-<h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">Ticket's Process</h1>
-<a href="showalltravel.jsp?userid=${uu}"><button class="btn btn-success align-content-center">Add member</button></a>
-<table class="table">
+<table class="table" border="3">
   <thead class="thead-dark">
     <tr>
    	  <th scope="col">Schedule ID</th>
@@ -23,9 +24,8 @@
     </tr>
   </thead>
   <tbody>
-    <c:if test="${param.id!= null}" >
     <jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
-     <c:forEach var="showBus" items="${UserDAO.ShowBookingOp(uu)}" >
+     <c:forEach var="showBus" items="${UserDAO.ShowBookingOp('U001')}" >
     <tr>
     			
     			 <td><c:out value="${showBus.scheduleId}"/></td>
@@ -36,21 +36,22 @@
                  <td><c:out value="${showBus.page}"/></td>
                  <td><c:out value="${showBus.pgender}"/></td>
                  <td><c:out value="${showBus.bookingStatus}"/></td>
-                 
                  <td>
-                 <c:if test="${showBus.bookingStatus != 'APPROVED' && showBus.bookingStatus!='CANCELLED'}">
-                	 <a href="paymentDetail.jsp?bookingId=${showBus.bookingId}&userid=${param.id}&amt=${showBus.totalAmount}"><button class="btn btn-success">Payment</button></a>
+                 <c:if test="${showBus.bookingStatus != 'APPROVED'}">
+                	<button class="btn btn-success">Payment</button>
                  </c:if>
-                 
+                 <c:if test="${showBus.bookingStatus=='APPROVED'}">
+                	<button class="btn btn-success">Download</button>
+                 </c:if>
                  </td>
                	 <td>
-          			<a href="clnt.jsp?bookingId=${showBus.bookingId}&userid=${param.id}"><button class="btn btn-danger">Cancel</button></a>  
+          			<button class="btn btn-danger">Cancel</button>
       			</td>
     </tr>
     </c:forEach>
-      </c:if>
   </tbody>
 </table>
+
 
 </body>
 </html>

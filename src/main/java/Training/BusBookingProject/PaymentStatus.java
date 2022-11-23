@@ -1,5 +1,5 @@
 package Training.BusBookingProject;
 
 public enum PaymentStatus {
-	PENDING,SUCCESSFULL,FILED
+	PENDING,SUCCESSFULL,FILED, REFUNDED
 }

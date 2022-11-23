@@ -7,6 +7,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="refund")

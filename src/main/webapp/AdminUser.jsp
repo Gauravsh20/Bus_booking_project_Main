@@ -11,9 +11,9 @@
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="js/jquery-3.5.1.js"></script>
 <script src="js/bootstrap.js"></script>
-<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
+</head>
 <style>
 nav{background-color: #bababa}
 #funcbtn{
@@ -24,16 +24,12 @@ height:10ex;
 #mainbtn{
 margin-left:20ex;
 padding-top: 10ex;
-text-decoration: underline;
 }
 #usern{
 text-align:right;
 padding-top:3ex;
-
 }
-
 </style>
-</head>
 <body>
 <div class="jumbotron jumbotron-fluid mb-0">
   <div class="container" align="center">
@@ -48,40 +44,31 @@ padding-top:3ex;
    		<a href="Logout"><button class="btn btn-danger" type="button">Log Out</button></a>
    </div>
 
-<jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
-
-<c:set var="user" value="${UserDAO.searchUserByUserId(userid) }"/>
-   </div>  
+   </div>
+   <h4 id="usern">Wellcome..!Admin</h4>  
 </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">BuS Booking System</a>
+    <a class="navbar-brand" href="#">BuS's</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="UserHome.jsp?userid=${userid}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="ChangePassword.jsp">Change Password</a>
+          <a class="nav-link active" aria-current="page" href="Adminheader.jsp">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
-        
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Welcome ${user.fullname}</a>
-        </li>
-      </ul> 
     </div>
   </div>
 </nav>
-

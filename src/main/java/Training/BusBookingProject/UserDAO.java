@@ -17,16 +17,20 @@ import org.hibernate.criterion.Restrictions;
 public class UserDAO {
 
 	SessionFactory sessionFactory;
+	
+// Show All User's
+	
 	public List<User> showUser(String user){
 		sessionFactory = SessionHelper.getConnection();
 		Session session=sessionFactory.openSession();
 		Query query = session.createQuery("from User");
 		Criteria cr = session.createCriteria(User.class);
 		List<User> userList=query.list();
-		return userList;
-		
+		return userList;	
 		
 	}
+	
+	//Update User
 	
 	public String updateUser(User user) {
 		 sessionFactory = SessionHelper.getConnection();
@@ -40,6 +44,7 @@ public class UserDAO {
 		 
 	 }
 
+  //Delete User
 	
 	 public String deleteUser(String userid) {
 		 sessionFactory = SessionHelper.getConnection();
@@ -55,11 +60,12 @@ public class UserDAO {
 			//e.printStackTrace();
 			return ("Not Delete ."+e.getMessage());
 			
-			
 		}
 		
 	 }
 	
+	//Generate User ID
+	 
 		public String generateUserId() {
 			
 			sessionFactory = SessionHelper.getConnection();
@@ -77,19 +83,33 @@ public class UserDAO {
 			return id2;
 
 		}
-
+		
+		//Add User:
+		
 	public String Adduser(User user) {
 		String userid = generateUserId();
 		user.setUserid(userid);
 		sessionFactory = SessionHelper.getConnection();
 		Session session = sessionFactory.openSession();
-		Criteria cr = session.createCriteria(User.class);
 		Transaction trans = session.beginTransaction();
 		session.save(user);
 		trans.commit();
+		session.close();
+		
+		session = sessionFactory.openSession();
+		Wallet wallet = new Wallet();
+		wallet.setWalletId(generateWalletId());
+		wallet.setWalletAmount(0);
+		wallet.setUserId(userid);
+		
+		session.save(wallet);
+		session.beginTransaction().commit();
+		
 		return "User Details added Successfully";
 
 	}
+	
+	//Search User by User ID
 
 	public User SearchUserId(String UserId) {
 		sessionFactory = SessionHelper.getConnection();
@@ -100,6 +120,16 @@ public class UserDAO {
 		return Userlist.get(0);
 	}
 
+	
+	
+	
+	
+	//Generate Booking ID
+	
+	
+	
+	
+	
 	public String generateBookingId() {
 		sessionFactory = SessionHelper.getConnection();
 		Session session = sessionFactory.openSession();
@@ -116,6 +146,11 @@ public class UserDAO {
 		return id2;
 	}
 
+	
+	
+	// Add Booking
+	
+	
 	public String addBooking(Booking booking) {
 		sessionFactory = SessionHelper.getConnection();
 		Session session = sessionFactory.openSession();
@@ -129,6 +164,9 @@ public class UserDAO {
 		t.commit();
 		return "Added Booking Details";
 	}
+	
+	
+	//Show All Booking
 
 	public List<Booking> showBooking(String booking) {
 		sessionFactory = SessionHelper.getConnection();
@@ -138,18 +176,9 @@ public class UserDAO {
 		List<Booking> bookingLst = query.list();
 		return bookingLst;
 	}
-
-	public List<User> checkUsers(String user, String psswd) {
-		sessionFactory = SessionHelper.getConnection();
-		Session session = sessionFactory.openSession();
-		Criteria cr = session.createCriteria(User.class);
-		cr.add(Restrictions.eq("username", user));
-		cr.add(Restrictions.eq("password", psswd));
-		List<User> usrLst = cr.list();
-		return usrLst;
-
-	}
-
+	
+	// Search Booking By User ID
+	
 	public Booking SearchBookingId(String UserId) {
 		sessionFactory = SessionHelper.getConnection();
 		Session session = sessionFactory.openSession();
@@ -158,6 +187,9 @@ public class UserDAO {
 		List<Booking> bookinglist = cr.list();
 		return bookinglist.get(0);
 	}
+	
+
+	// Seat No. search By schedule ID
 
 	public List<Booking> seats(String a) {
 		sessionFactory = SessionHelper.getConnection();
@@ -166,7 +198,9 @@ public class UserDAO {
 		List<Booking> leavelist1 = query.list();
 		return leavelist1;
 	}
-
+	
+	
+	
 	public List<Integer> book(String id) {
 		List<Booking> booking = seats(id);
 		List<Integer> seat = new ArrayList<Integer>();
@@ -185,6 +219,8 @@ public class UserDAO {
 		return seat2;
 	}
 	
+	//Show  all Bookings by user ID
+	
 	public List<Booking>ShowBookingOp(String UserId){
 		sessionFactory = SessionHelper.getConnection();
 		Session session = sessionFactory.openSession();
@@ -193,6 +229,9 @@ public class UserDAO {
 		return leavelist2;	
 		
 	}
+	
+	//delete Booking by booking id
+	
 	 public String CancelTicets(String BookingID) {
 		 sessionFactory =SessionHelper.getConnection();
 		 Session session=sessionFactory.openSession();
@@ -202,6 +241,44 @@ public class UserDAO {
 		 query.executeUpdate();
 		 return "Gaurav";
 	 }
+	 
+	 
+	 
+	 public String BookingDelete(String BookingId) {
+		 sessionFactory=SessionHelper.getConnection();
+		 Session session=sessionFactory.openSession();
+		 Booking booking=SearchBookingId(BookingId);
+		 Transaction tr=session.beginTransaction();
+		 session.delete(booking);
+		 tr.commit();
+		 try {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			e.getMessage();
+			return "Not Canceled";
+		}
+		 return "delete...";
+		 
+	 }
+	
+	
+	//validation User
+	
+	public List<User> checkUsers(String user, String psswd) {
+		sessionFactory = SessionHelper.getConnection();
+		Session session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(User.class);
+		cr.add(Restrictions.eq("username", user));
+		cr.add(Restrictions.eq("password", psswd));
+		List<User> usrLst = cr.list();
+		return usrLst;
+	}
+	
+	public User searchUserByUserId(String userId) {
+		return (User) SessionHelper.getConnection().openSession().createQuery("from User where userid = :userId").setParameter("userId", userId).list().get(0);
+	}
+	
 	 
 	 public String generateWalletId(){
 		 sessionFactory = SessionHelper.getConnection();
@@ -220,16 +297,20 @@ public class UserDAO {
 		 
 		}
 	 
-	 public String addWallet(Wallet wallet){
+	 public Wallet searchWalletByUserId(String userId) {
+		return (Wallet) SessionHelper.getConnection().openSession().createQuery("from Wallet where userId = :userId").setParameter("userId", userId).list().get(0);
+	}
+	 
+	 public void addWallet(String userId, double amount){
 			sessionFactory = SessionHelper.getConnection();
 			Session session = sessionFactory.openSession();
-			String walletId=generateWalletId();
-			wallet.setWalletId(walletId);
-			Criteria cr = session.createCriteria(Wallet.class);
+			
+			Wallet wallet = searchWalletByUserId(userId);
+			wallet.setWalletAmount(wallet.getWalletAmount() + amount);
+	
 			Transaction trans = session.beginTransaction();
-			session.save(wallet);
+			session.update(wallet);
 			trans.commit();
-			return "***...Wallet Added Successfully...***";
 			
 		}
      
@@ -265,10 +346,10 @@ public class UserDAO {
 		 
 	 }
 	 
-	 public double Wallet_type(String UserId,String type) {
+	 public double Wallet_type(String UserId) {
 		 sessionFactory =SessionHelper.getConnection();
 		 Session session=sessionFactory.openSession();
-		 Query query = session.createQuery("SELECT SUM(walletAmount) FROM Wallet where userId=:a and walletType=:t").setParameter("a",UserId).setParameter("t",WalletType.valueOf(type));
+		 Query query = session.createQuery("SELECT SUM(walletAmount) FROM Wallet where userId =:n").setParameter("n", UserId);
 		 List<Double>wall=query.list();
 		 try {
 			return wall.get(0);
@@ -279,24 +360,8 @@ public class UserDAO {
 		}
 	 }
 	 
-	 public String BookingDelete(String BookingId) {
-		 sessionFactory=SessionHelper.getConnection();
-		 Session session=sessionFactory.openSession();
-		 Booking booking=SearchBookingId(BookingId);
-		 Transaction tr=session.beginTransaction();
-		 session.delete(booking);
-		 tr.commit();
-		 try {
-			return "delete...";
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-//			e.printStackTrace();
-			e.getMessage();
-			return "Not Canceled";
-		}
-		 
-	 }
-	 public List<Booking> SearchBookId(String Bookedid){
+	
+	  public List<Booking> SearchBookId(String Bookedid){
 		 sessionFactory=SessionHelper.getConnection();
 		 Session session=sessionFactory.openSession();
 		 Query query = session.createQuery("From Booking where bookingId=:u").setParameter("u", Bookedid);
@@ -307,19 +372,33 @@ public class UserDAO {
 	 public List<Wallet>SearchWalletId(String userId,String type){
 		 sessionFactory=SessionHelper.getConnection();
 		 Session session=sessionFactory.openSession();
-		 Query query = session.createQuery("From Wallet where userId=:u and walletType=:w").setParameter("u", userId).setParameter("w",WalletType.valueOf(type));
+		 Query query = session.createQuery("From Wallet where userId=" + userId);
 		List<Wallet>Wallet = query.list();
 		return Wallet;	
 		 
 	 }
 	 
-	 public List<Booking> Final_ticket(String Userid){
+	  public List<Booking> Final_ticket(String Userid){
 		 sessionFactory=SessionHelper.getConnection();
 		 Session session=sessionFactory.openSession();
 		 Query query = session.createQuery("From Booking where userId=:u and bookingStatus='APPROVED'" ).setParameter("u", Userid);
 		List<Booking> leavelist2 = query.list();
 		return leavelist2;	 
 	 }
+	  
+	  
+	  public String ForgetPwd(String id,String newpass){
+			 sessionFactory = SessionHelper.getConnection();
+		     Session session = sessionFactory.openSession();
+		     User user=SearchUserId(id);
+		     String userid=user.getUserid();
+		     Query q=session.createQuery("Update User SET password=:np WHERE userid =:id").setParameter("np",newpass).setParameter("id",userid);
+			 Transaction trans = session.beginTransaction();
+			 q.executeUpdate();
+			 trans.commit();
+			return "password changed";
+			
+		}
 	 
 	 
 	 
