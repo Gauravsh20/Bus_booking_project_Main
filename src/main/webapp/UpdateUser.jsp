@@ -16,7 +16,7 @@
            	<input type="text" name="username"/> <br/><br/>
           password :
            	<input type="number" name="password"/> <br/><br/> 	  	  
-		 <button type="button" class="btn btn-primary">Update</button><br/><br/>
+		 <button type="submit" class="btn btn-primary">Update</button><br/><br/>
 				
      </form>
      <c:if test="${param.userid!=null}">

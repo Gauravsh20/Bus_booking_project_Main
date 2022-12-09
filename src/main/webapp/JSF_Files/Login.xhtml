@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+      <h1>User Authentication Form</h1>
+ 
+    <h:form>
+   		 User Name : 
+        <h:inputText value="#{user.username}" id="u" /> <br/><br/>
+        Password : 
+        <h:inputSecret value="#{user.password}" id="p"/> <br/><br/>
+        <h:commandButton id="error" value="Login" action="#{jsfDAO.checkUsers(user)}" />
+      </h:form>
+       <h:messages id="error" style = "color:red;margin:8px;" />
+    </h:body>
+
+
+</html>

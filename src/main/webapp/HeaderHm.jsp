@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 <link rel="stylesheet" href="Css/Home.css">
 <link rel="stylesheet" href="Css/bootstrap.css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -22,7 +21,7 @@
     	<h1 class="display-5" id="main_Heading">Bus Booking System</h1>
     </div>
     <div class="col-3" id="Logbtn">
-   		<a href="UserDetails.jsp"><button class="btn btn-danger" type="button">Sign off</button></a>
+   		<a href="UserDetails.jsp"><button class="btn btn-danger" type="button">Sign up</button></a>
    		<a href="userCheck.jsp"><button class="btn btn-success" type="button">Sign in</button></a>
    		<a href="Admin.jsp"><button class="btn btn-dark" type="button">Admin</button></a>
    </div>

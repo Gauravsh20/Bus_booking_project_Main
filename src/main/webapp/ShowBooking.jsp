@@ -22,7 +22,7 @@
               <th> Seat No </th>
               <th> Fare Amount </th>
               <th> Total Amount </th>
-              <th> Delete </th>
+              
    </tr>            
               <c:forEach var="showBooking" items="${beanDao.showBooking()}" >
               <tr>
@@ -36,7 +36,7 @@
                   <td><c:out value="${showBooking.seatNo}"/></td>
                   <td><c:out value="${showBooking.fareAmount}"/></td>
                   <td><c:out value="${showBooking.totalAmount}"/></td>
-                  <td><button class="btn btn-danger">Delete</button></td>
+                  
               </tr>
              </c:forEach>
     </table>

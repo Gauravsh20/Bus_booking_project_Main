@@ -1,30 +1,55 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="UserHeader.jsp"/>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </head>
 <script type="text/javascript">
+
+
+
 function myFunction() {
 	  // Declare variables
-	  var input, filter, table, tr, td, i;
+	  var input, filter, table, tr, td, i,td2,filter2;
 	  input = document.getElementById("myInput");
+	  
+	  var dates=document.getElementById("datefilterfrom");
+      var date=moment(dates.value).format('YYYY-MM-DD');
+      filter2 = date.toUpperCase();
+      
 	  filter = input.value.toUpperCase();
 	  table = document.getElementById("myTable");
 	  tr = table.getElementsByTagName("tr");
 
 	  // Loop through all table rows, and hide those who don't match the search query
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
+	    td = tr[i].getElementsByTagName("td")[1];
 	    
 	    if (td) {
 	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
+	        tr[i].style.display ="";
+	        
+	        td2 = tr[i].getElementsByTagName("td")[2];
+            if (td2) {
+                if (td2.innerHTML.toUpperCase().indexOf(filter2) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+    
+                }
+            }
+			
+			
 	      } else {
 	        tr[i].style.display = "none";
 	      }
 	    }
+	    
 	  }
 	  
 	}
+
+//end
 
 </script>
 <style>
@@ -63,9 +88,12 @@ function myFunction() {
 </style>
 
 
-<body><center>
+<body>
+<center>
 <h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">All Bus's</h1>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for pickup">
+<input type="text" id="myInput" placeholder="Search for Destination">
+<input type="date" id="datefilterfrom" data-date-split-input="true">
+<button  type="button" class="btn-primary" onclick="myFunction()">Search</button>
 	 <form method="get" action="">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.TravelscheduleDAO"/>
           <div class="heading">
@@ -98,7 +126,7 @@ function myFunction() {
                  <td><c:out value="${showBus.addressend}"/></td>
                  <td><c:out value="${showBus.fareamount}"/></td>
                  <td><c:out value="${showBus.remark}"/></td>
-                 <td><a href="AddTickets.jsp?scheduleid=${showBus.scheduleid}&userid=${param.userid}">Booked</a></td>
+                 <td><a href="AddTickets.jsp?scheduleid=${showBus.scheduleid}&userid=${param.userid}">BookNow</a></td>
               </tr>
            </c:forEach>   
          </table>

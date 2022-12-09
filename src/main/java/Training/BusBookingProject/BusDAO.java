@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,7 +18,8 @@ import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
-
+@ManagedBean
+@SessionScoped
 public class BusDAO {
 	
 	SessionFactory sessionFactory;
@@ -193,14 +197,14 @@ public class BusDAO {
 				}
 				
 	 }
-				//ShowDriver		
+//ShowDriver		
 			 
 	            public List<DriverDetails> show(){
-		    	sessionFactory=SessionHelper.getConnection();
-				Session session=sessionFactory.openSession();
-				Criteria cr=session.createCriteria(DriverDetails.class);
-				List<DriverDetails> driverlist = cr.list();
-				return driverlist;
+			    	sessionFactory=SessionHelper.getConnection();
+					Session session=sessionFactory.openSession();
+					Criteria cr=session.createCriteria(DriverDetails.class);
+					List<DriverDetails> driverlist = cr.list();
+					return driverlist;
 	            }
 //updateDriver
 	            

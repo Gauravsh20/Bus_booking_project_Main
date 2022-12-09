@@ -23,6 +23,7 @@ background-color:F5BDB1;
           <th>DriverName</th>
           <th>DriverLicNo</th>
           <th>ContactNo</th>
+          <th>Status</th>
           <th>UpdateDriver</th>
           <th>DeleteDriver</th>
           </tr>
@@ -32,6 +33,8 @@ background-color:F5BDB1;
              <td><c:out value="${showDriver.driver_id}"/></td>
              <td><c:out value="${showDriver.driver_name}"/></td>
              <td><c:out value="${showDriver.driver_lic_no}"/></td>
+               <td><c:out value="${showDriver.contact_no}"/></td>
+            
             
             
             

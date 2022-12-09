@@ -23,7 +23,7 @@ background-color:F5BDB1;
            <th>UserName</th>
            <th>Password</th>
            <th>Update</th>
-           <th>Delete</th>
+          
           </tr>
         </thead>  
           <c:forEach var="showUser" items="${beanDao.showUser(user)}" >
@@ -35,7 +35,7 @@ background-color:F5BDB1;
                  <td><c:out value="${showUser.username}"/></td>
                  <td><c:out value="${showUser.password}"/></td>
                 <td><a href="UpdateUser.jsp?id=${showUser.userid}"><button class="btn btn-success" type="button">Update</button></a></td>               
-                 <td><a href="DeleteUser.jsp?id=${showBus.userid}"><button class="btn btn-danger" >Delete</button></a></td> 
+                
                  
               </tr>
            </c:forEach>

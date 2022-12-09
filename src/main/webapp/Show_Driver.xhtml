@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:body>
+	<center>
+	<a href="AddDriver.jsp"><button class="btn btn-success m-5" type="button">Add Driver</button></a>
+		<h1><h:outputText value="Show All driver's"/></h1>
+	<h:form>
+		<h:dataTable  border="3" value="#{busDAO.show()}" var="e">
+		<h:column>
+			<f:facet name="header">Driver Name</f:facet>
+			<h:outputText value="#{e.driver_name}"/>	
+		</h:column>
+		<h:column>
+			<f:facet name="header">Contact No.</f:facet>
+			<h:outputText value="#{e.contact_no}"/>
+		</h:column>
+			<h:column>
+			<f:facet name="header">Status</f:facet>
+			<h:outputText value="#{e.driverstatus}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Driver_lic_no</f:facet>
+			<h:outputText value="#{e.driver_lic_no}"/>
+		</h:column>
+		</h:dataTable>
+	</h:form>
+</center>
+</h:body>
+</html>

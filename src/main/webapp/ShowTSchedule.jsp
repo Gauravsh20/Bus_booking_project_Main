@@ -30,11 +30,10 @@ background-color:F5BDB1;
               <th>Estimatearrival Time</th>
               <th>Fare Amount</th>
               <th>Remark</th>
-              <th>Update</th>
               <th>Delete</th>
             </tr>
           </thead>  
-           <c:forEach var="showBus" items="${beanDao.showTSchedule(ts)}" >
+           <c:forEach var="showBus" items="${beanDao.showTSchedule()}" >
               <tr>
                  <td><c:out value="${showBus.scheduleid}"/></td>
                  <td><c:out value="${showBus.busid}"/></td>
@@ -47,7 +46,6 @@ background-color:F5BDB1;
                  <td><c:out value="${showBus.estimatearrivaltime}"/></td>
                  <td><c:out value="${showBus.fareamount}"/></td>
                  <td><c:out value="${showBus.remark}"/></td>
-                 <td><button class="btn btn-success" type="button">Update</button></td>
                  <td><a href="DeleteTS.jsp?id=${showBus.scheduleid}"><button class="btn btn-danger" type="button">Delete</button></a></td>
               </tr>
            </c:forEach>   

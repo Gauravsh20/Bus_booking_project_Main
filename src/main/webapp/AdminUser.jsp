@@ -60,13 +60,7 @@ padding-top:3ex;
           <a class="nav-link active" aria-current="page" href="Adminheader.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="AdminForgetPassword.jsp">Change Password</a>
         </li>
       </ul>
     </div>

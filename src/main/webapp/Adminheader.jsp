@@ -43,7 +43,7 @@ padding-top:3ex;
     	<h1 class="display-5" id="main_Heading">Bus Booking System</h1>
     </div>
     <div class="col-3" id="Logbtn">
-   		<a href=""><button class="btn btn-danger" type="button">Log Out</button></a>
+   		<a href="Logout"><button class="btn btn-danger" type="button">Log Out</button></a>
    </div>
 
 <jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
@@ -64,13 +64,7 @@ padding-top:3ex;
           <a class="nav-link active" aria-current="page" href="Adminheader.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="AdminForgetPassword.jsp">Change Password</a>
         </li>
       </ul>
     </div>
@@ -79,7 +73,7 @@ padding-top:3ex;
 <div class="container-fluid">
 	<div class="row" id="mainbtn">
 		<div class="col-3 ">
-			<a href="ShowBus.jsp"><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Bus's</h2></button></a>
+			<a href="Show_Driver.xhtml"><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Bus's</h2></button></a>
 		</div>
 		<div class="col-3">
 			<a href="ShowDriver.jsp"><button class="btn" id="funcbtn" style="background-color: #caf75f" type="button"><h2>Driver's</h2></button></a>

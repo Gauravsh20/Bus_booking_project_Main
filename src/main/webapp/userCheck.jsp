@@ -6,10 +6,11 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"> </script>
 <h1 id="">User Login</h1>
 
+
 <div class="container-fluid">
 <div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
 <div class="row">
-	<div class="col-7 mt-5">
+	<div class="col-6 mt-5 ml-5">
 		<form action="userCheck.jsp" method="post" name="myForm" >
 			<div class="row">
 				<div class="col-30">

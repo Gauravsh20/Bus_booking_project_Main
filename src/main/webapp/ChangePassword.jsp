@@ -9,7 +9,7 @@
 					<label for="text">User ID :</label>
 				</div>
 				<div class="col-80">
-					<input type="text" name="username"/><br/><br/>
+					<input type="text" name="username" value="${userid}" readonly="readonly"/><br/><br/>
 				</div>
 				<div class="col-30">
 					<label for="text">New Password :</label>

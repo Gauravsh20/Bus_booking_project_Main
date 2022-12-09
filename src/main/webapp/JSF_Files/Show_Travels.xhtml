@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<center>
+		<h1><h:outputText value="Show All Travel's"/></h1>
+		<h4>UserID : <h:outputText value="#{userId}"/></h4>
+	<h:form>
+		<h:dataTable  border="3" value="#{travelscheduleDAO.showTSchedule()}" var="e">
+		<h:column>
+			<f:facet name="header">Starting Place</f:facet>
+			<h:outputText value="#{e.startingpoint}"/>	
+		</h:column>
+		<h:column>
+			<f:facet name="header">Destination Place</f:facet>
+			<h:outputText value="#{e.destinationpoint}"/>
+		</h:column>
+			<h:column>
+			<f:facet name="header">Start Date</f:facet>
+			<h:outputText value="#{e.scheduledate}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Journey End Date</f:facet>
+			<h:outputText value="#{e.estimatearrivaldate}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Book Now</f:facet>
+			<a href="Booking.xhtml?id=#{e.scheduleid}" class="btn">Book Now</a>
+		</h:column>
+		</h:dataTable>
+	</h:form>
+</center>
+</h:body>
+
+
+
+
+
+</html>

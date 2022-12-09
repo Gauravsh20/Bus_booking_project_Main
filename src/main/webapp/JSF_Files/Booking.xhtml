@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+<h4>UserID : <h:outputText value="#{userId}"/></h4>
+
+<h4>Travel ID :<h:outputText var="Tid" value="#{param['id']}"/></h4>
+<center>
+
+<h:form>
+<h1>Book Now</h1>
+<h:inputText  id="scheduleId" value="#{booking.scheduleId}"/><br/><br/>
+<h:inputText  id="userId" value="#{booking.userId}"/><br/><br/>
+<h:outputLabel  value="Passenger Name : "/>
+	<h:inputText id="pname" value="#{booking.pname}"/><br/><br/>
+	<h:outputLabel  value="Passenger Age : "/>
+	<h:inputText id="page"/><br/><br/>
+	
+<h:outputLabel  value="Passenger Gender : "/>
+ 	<h:selectOneRadio id="pgender" value="#{booking.pgender}"> 
+   		<f:selectItem itemValue = "MALE" itemLabel = "MALE" /> 
+   		<f:selectItem itemValue = "FEMALE" itemLabel = "FEMALE" />
+	</h:selectOneRadio><br/>
+	
+
+<h:outputLabel  value="Select Seat No : "/>
+			<h:selectOneMenu value="#{booking.seatNo}">
+                <f:selectItems var="c" value="#{jsfDAO.book(param['id'])}" itemLabel="#{c}" itemValue="#{c}" />
+            </h:selectOneMenu><br/><br/>
+
+
+<h:outputLabel  value="Fare_Amount : "/>
+<h:inputText id="fareAmount" value="#{booking.fareAmount}"/><br/><br/>
+<h:outputLabel  value="Total Amount : "/>
+<h:inputText id="totalAmount" value="#{booking.totalAmount}"/><br/><br/>
+	<h:commandButton value="Book" action="#{userDAO.addBooking(booking)}"/>
+</h:form>
+</center>
+
+</h:body>
+</html>

@@ -8,13 +8,32 @@
 <head>
 <title>Insert title here</title>
 <script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	function fun() {
 		confirm("Are you sure to book the Ticket");
 		$("#error").html("**Successfull**");  
 	
+	}
+
+	$("#pname").blur(function(){
+		confirm("Are you sure to book the Ticket");
+		var regName = /^[a-zA-Z]+$/;
+		 var regName1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	    var name = document.getElementById('pname').value;
+	    if(!regName.test(name) && !regName1.test(name)){
+	    	$("#error").html("**Invalid User Name");
+	    	$("#pname").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	    }
+
+	});
+
+	function my_alert_func()
+	{
+		document.getElementById("error").innerHTML=null;
+		
 	}
 
 </script>
@@ -77,6 +96,7 @@ h1{
 }
 </style>
 </head>
+<body>
 	<jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
 	<jsp:useBean id="BusDAO" class="Training.BusBookingProject.BusDAO"/>
 	<jsp:useBean id="TravelDAO" class="Training.BusBookingProject.TravelscheduleDAO"/>
@@ -88,6 +108,7 @@ h1{
   		
   		<h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">Booking</h1>
  		<center>
+ 		
  		<div class="container-fluid ">
  		
  		
@@ -103,7 +124,7 @@ h1{
              <thead>
                 <tr>
                   <th>Passenger_name   </th>
-                  <th><input type="text" name="pname" required="required"/></th>
+                  <th><input type="text" name="pname"  id="pname" required="required"/></th>
                 </tr>
             </thead>
              <thead>

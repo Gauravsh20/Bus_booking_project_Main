@@ -11,6 +11,8 @@
 <table class="table" border="3">
   <thead class="thead-dark">
     <tr>
+      <th scope="col">User ID</th>
+       <th scope="col">Booking ID</th>
    	  <th scope="col">Schedule ID</th>
       <th scope="col">Seat No.</th>
       <th scope="col">Fare Amount</th>
@@ -39,6 +41,7 @@
                  <td>
                  <c:if test="${showBus.bookingStatus != 'APPROVED'}">
                 	<button class="btn btn-success">Payment</button>
+                	 <a href="paymentDetail.jsp?bookingId=${showBus.bookingId}&userid=${param.id}&amt=${showBus.totalAmount}">
                  </c:if>
                  <c:if test="${showBus.bookingStatus=='APPROVED'}">
                 	<button class="btn btn-success">Download</button>
@@ -51,7 +54,5 @@
     </c:forEach>
   </tbody>
 </table>
-
-
 </body>
 </html>

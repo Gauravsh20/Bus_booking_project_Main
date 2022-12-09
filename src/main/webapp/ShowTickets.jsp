@@ -43,9 +43,12 @@
                  </c:if>
                  
                  </td>
-               	 <td>
-          			<a href="clnt.jsp?bookingId=${showBus.bookingId}&userid=${param.id}"><button class="btn btn-danger">Cancel</button></a>  
-      			</td>
+                 <td>
+                 <c:if test="${showBus.bookingStatus != 'APPROVED' && showBus.bookingStatus!='CANCELLED'}">
+                	<a href="clnt.jsp?bookingId=${showBus.bookingId}&userid=${param.id}"><button class="btn btn-danger">Cancel</button></a>
+                 </c:if>
+                 
+                 </td>
     </tr>
     </c:forEach>
       </c:if>

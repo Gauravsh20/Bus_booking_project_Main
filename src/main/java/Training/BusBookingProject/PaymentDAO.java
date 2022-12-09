@@ -1,10 +1,14 @@
 package Training.BusBookingProject;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Set;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -40,16 +44,16 @@ Session session;
 		return wall.get(0);
 	 }
 	
-	public String addPayment(PaymentDetail paymentDetail){
+	public String addPayment(PaymentDetail paymentDetail) throws IOException{
 		 	UserDAO udao=new UserDAO();
 		 	Wallet wallet = udao.searchWalletByUserId(paymentDetail.getUserId());
 		 	
 		 	double bamt=paymentDetail.getAmount();
 		 	double amount = wallet.getWalletAmount();
-		 	
+
 		 	
 		 	if(bamt >= amount) {
-		 		return"not pay";
+		 		return"Insufficient wallent amount ";
 		 		
 		 	}else {
 				paymentDetail.setPaymentId(paymentId());
@@ -79,8 +83,9 @@ Session session;
 				
 				Transaction trans = session.beginTransaction();
 				session.update(wallet);
-				trans.commit();		
-				return "Payment Details Added";
+				trans.commit();	
+				
+				return null;
 		 	}
 	 }
 	

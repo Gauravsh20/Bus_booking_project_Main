@@ -16,6 +16,12 @@ label{
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
+#gg{
+	width:90vh;
+	height:50vh;
+	margin-top:10ex;
+	margin-left: -10ex;
+}
 input[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -63,11 +69,7 @@ h1{
         margin-top: 0;
     }
 }
-#gg{
-	width:90vh;
-	height:50vh;
-	margin-top:10ex;
-}
+
 
 
 

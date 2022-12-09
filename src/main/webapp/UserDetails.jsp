@@ -2,6 +2,7 @@
 <%@page import="Training.BusBookingProject.UserDAO"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="HeaderHm.jsp"/>
+<head>
 <title>Register Page</title>
 <link rel="stylesheet" href="Css/FormDetail.css">
 <script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
@@ -13,11 +14,84 @@ $(function(){
 		var cpss=$("#cpassword").val();
 		
 		if(pss!==cpss){
-			$("#error").html("**Password not matched");  
+			$("#error").html("**Password not matched"); 
 			$("#password").val("");
 			$("#cpassword").val("");
+			var setInterval_ID = setInterval(my_alert_func, 6000);  
 		}
 	});
+	$("#fullname").blur(function(){
+		var regName = /^[a-zA-Z]+$/;
+		 var regName1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	    var name = document.getElementById('fullname').value;
+	    if(!regName.test(name) && !regName1.test(name)){
+	    	$("#error").html("**Invalid User Name");
+	    	$("#fullname").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	    }
+
+	});
+
+	$("#contactno").blur(function(){
+		 var phoneno =/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+	    var inputtxt = document.getElementById('contactno').value;
+	    if(!phoneno.test(inputtxt)){
+	    	$("#error").html("**Invalid Contact Number");
+	    	$("#contactno").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	        
+	    }
+
+	});
+
+	$("#emailaddress").blur(function(){
+		 const regex_pattern =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		 var email_id = document.getElementById('emailaddress').value;
+		    if (!regex_pattern.test(email_id)) {
+		    	$("#error").html("**Invalid Email Address");
+		    	$("#emailaddress").val(""); 
+		    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+		       
+		    }
+
+	});
+
+	$("#password").blur(function(){
+		var res;
+		 var str = document.getElementById('password').value;
+		 if (str.match(/[a-z]/g) && str.match(
+         /[A-Z]/g) && str.match(
+         /[0-9]/g) && str.match(
+         /[^a-zA-Z\d]/g) && str.length >= 8){
+			 $("#error1").html("**Strong password");
+			 var setInterval_ID = setInterval(my_alert_func1, 6000); 
+			 }
+		 else
+	 		{
+		 		$("#error").html("**Invalid password  e.g Gau@12gau");
+			 $("#password").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 10000); 
+	        
+	        }
+
+
+	});
+
+	
+	
+	function my_alert_func()
+	{
+		document.getElementById("error").innerHTML=null;
+		
+	}
+
+	function my_alert_func1()
+	{
+		document.getElementById("error1").innerHTML=null;
+		
+	}
 });
 </script>
 <style>
@@ -28,10 +102,11 @@ margin-left:-20ex;
 
 
 </style>
-
+</head>
 <h1 id="">New User Details</h1>
 <div class="container-fluid">
 <div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
+<div id="error1" style="color:green; text-align: center; font-weight: bolder;"></div>
 <div class="row">
 	<div class="col-7">
 	<form method="post" action="" name="myForm">	
@@ -40,7 +115,7 @@ margin-left:-20ex;
 		<label for="fname">Full Name :</label>
 		</div>	
 		<div class="col-80">
-		    <input type="text" name="fullname" placeholder="Enter Full Name" required="required"/> <br/><br/>
+		    <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name" required="required"/> <br/><br/>
 		</div>
 	</div>	
 	<div class="row">
@@ -49,7 +124,7 @@ margin-left:-20ex;
 		
 		</div>	
 		<div class="col-80">	
-			<input type="text" name="contactno" placeholder="Enter Contact No." required="required" max="10"/> <br/><br/>
+			<input type="text" name="contactno" id="contactno" placeholder="Enter Contact No." required="required" max="10"/> <br/><br/>
 		</div>
 	</div>	
 	
@@ -77,7 +152,7 @@ margin-left:-20ex;
 	<label for="password">Password :</label>	
 		</div>	
 		<div class="col-80">
-			<input type="password" name="password" id="password" placeholder="Password"/> <br/><br/>
+			<input type="password" name="password" id="password" required="required"/> <br/><br/>
 		</div>
 	</div>
 		<div class="row">
@@ -85,7 +160,7 @@ margin-left:-20ex;
 	<label for="password">Confirm Password :</label>	
 		</div>	
 		<div class="col-80">
-			<input type="password" name="cpassword" id="cpassword" placeholder="Password"/> <br/><br/>
+			<input type="password" name="cpassword" id="cpassword" placeholder="Password" required="required"/> <br/><br/>
 			<span id = "message" style="color:red"> </span> <br><br>
 		</div>
 	</div>
@@ -101,7 +176,7 @@ margin-left:-20ex;
 		<jsp:useBean id="beanDao" class="Training.BusBookingProject.UserDAO"/>
 		<jsp:useBean id="users" class="Training.BusBookingProject.User"/>
 		<jsp:setProperty property="*" name="users"/>
-		<c:set var="out" value="${beanDao.Adduser(users)}"/>
+		<c:set value="${beanDao.Adduser(users)}"/>
 	</c:if>
 	<div class="col-5">
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -110,6 +185,6 @@ margin-left:-20ex;
 	        
         	
 </div>
-
+</div>
 </body>
 </html>

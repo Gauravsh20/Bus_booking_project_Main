@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,6 +17,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+@ManagedBean
+@SessionScoped
 public class UserDAO {
 
 	SessionFactory sessionFactory;
@@ -239,7 +244,7 @@ public class UserDAO {
 		 Query query = session.createQuery(hql);
 		 query.setParameter("book", BookingID);
 		 query.executeUpdate();
-		 return "Gaurav";
+		 return "Canceled Ticket Success";
 	 }
 	 
 	 

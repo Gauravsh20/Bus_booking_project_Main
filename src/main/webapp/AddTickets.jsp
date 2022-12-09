@@ -3,6 +3,31 @@
 <jsp:include page="UserHeader.jsp"/>
 <title>Insert title here</title>
 </head>
+<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	$("#pname").blur(function(){
+		alert("Are you sure to book the Ticket");
+		var regName = /^[a-zA-Z]+$/;
+		 var regName1 = /^[a-zA-Z]+ [a-zA-Z]+$/;
+	    var name = document.getElementById('pname').value;
+	    if(!regName.test(name) && !regName1.test(name)){
+	    	$("#error").html("**Invalid User Name");
+	    	$("#pname").val(""); 
+	    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+	        
+	    }
+
+	});
+
+	function my_alert_func()
+	{
+		document.getElementById("error").innerHTML=null;
+		
+	}
+
+</script>
 <body>
 <c:out value="${userid}"/>
 <jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
@@ -15,6 +40,7 @@
 		<c:set var="bid" value="${travel.busid}"/>
   		
   		<h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">Booking</h1>
+  		<div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
  		<center>
  		<div class="container-fluid ">
  		
@@ -31,13 +57,13 @@
              <thead>
                 <tr>
                   <th>Passenger_name   </th>
-                  <th><input type="text" name="pname" required="required"/></th>
+                  <th><input type="text" name="pname" id="pname" required="required"/></th>
                 </tr>
             </thead>
              <thead>
                 <tr>
                   <th>Passenger_age  </th>
-                  <th><input type="number" name="page" required="required"/></th>
+                  <th><input type="number" name="page" required="required" min="12" max="90"/></th>
                 </tr>
             </thead>
              <thead>
@@ -68,7 +94,7 @@
             </thead>
              <thead>
                 <tr>
-                  <th>Select No : <select name="seatNo">
+                  <th>Select Seat No : <select name="seatNo">
 			<c:forEach items="${UserDAO.book(tra)}" var="seat2">
    			 <option value="${seat2}"> <c:out value="${seat2}"/></option>
    			 <br>

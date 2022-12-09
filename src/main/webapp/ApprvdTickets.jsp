@@ -4,7 +4,6 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function fun() {
-		confirm("Are you sure to Cancel the Ticket");
 		$("#error").html("**Successfull**");  
 	
 	}

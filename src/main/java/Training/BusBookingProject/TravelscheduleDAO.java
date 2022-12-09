@@ -6,6 +6,9 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,6 +18,8 @@ import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
+@ManagedBean(name="travelscheduleDAO")
+@SessionScoped
 public class TravelscheduleDAO {
 	SessionFactory sessionFactory;
 	
@@ -44,14 +49,13 @@ public class TravelscheduleDAO {
 //			
 //		}
 		
-		 public List<TravelscheduleMain> showTSchedule(String ts){
+		 public List<TravelscheduleMain> showTSchedule(){
 				sessionFactory = SessionHelper.getConnection();
 				Session session=sessionFactory.openSession();
 				Query query = session.createQuery("from TravelscheduleMain");
 				Criteria cr = session.createCriteria(TravelscheduleMain.class);
 				List<TravelscheduleMain> tsList=query.list();
-				return tsList;
-				
+				return tsList;	
 			}
 	
 	

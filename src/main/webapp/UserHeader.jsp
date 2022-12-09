@@ -66,15 +66,14 @@ padding-top:3ex;
           <a class="nav-link active" aria-current="page" href="UserHome.jsp?userid=${userid}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ChangePassword.jsp">Change Password</a>
+          <a class="nav-link" href="ChangePassword.jsp?userid=${param.userid}">Change Password</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"></a>
+          <a class="nav-link" href="ShowWallet.jsp?userid=${param.userid}">Wallet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="ShowTickets.jsp?id=${userid}">Tickets</a>
         </li>
-        
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">

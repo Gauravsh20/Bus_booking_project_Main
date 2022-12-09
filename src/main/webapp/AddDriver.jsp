@@ -19,7 +19,7 @@ function my_alert_func()
 		<input type="text" name ="driver_lic_no"/><br/><br/>
 		Enter contact-no :
 		<input type="number" name ="contact_no"/><br/><br/>
-		<button type="button" class="btn btn-primary">Insert</button><br/><br/>
+		<button type="submit" class="btn btn-primary">Insert</button><br/><br/>
 	</center>
 	
 <c:if test="${param.driver_name!= null && param.driver_lic_no != null}" >
