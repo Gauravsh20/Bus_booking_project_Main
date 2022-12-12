@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<title>Insert title here</title>
+ <ui:include src="Adminheader.xhtml"/>
+<style>
+.TableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #F5BDB1;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+</style>
+</head>    
+<h:body>
+		<div class="heading">
+	   <h3 class="text-center"><h:outputText value="Refund's"/></h3>
+	    <h:button outcome="AdminHomePage.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
+			
+	</div>
+	<h:form>
+			<center>
+              
+           
+        <h:dataTable value="#{busDAO.showRefund()}" var="e" border="3">
+        	    <h:column>
+                    <f:facet name="header">Refund Id</f:facet>
+                    <h:outputText value="#{e.refundId}"/>
+                </h:column>
+                        <h:column>
+                    <f:facet name="header">Payment Id</f:facet>
+                    <h:outputText value="#{e.paymentId}"/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">User Id</f:facet>
+                    <h:outputText value="#{e.userId}"/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Wallet Id</f:facet>
+                    <h:outputText value="#{e.walletId}"/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Amount</f:facet>
+                    <h:outputText value="#{e.amount}"/>
+                </h:column>
+                
+                    <h:column>
+                    <f:facet name="header">RefundDate</f:facet>
+                    <h:outputText value="#{e.refundDate}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Refund Status</f:facet>
+                    <h:outputText value="#{e.refundStatus}"/>
+                </h:column>
+                
+        </h:dataTable>
+         </center>
+        </h:form>
+	</h:body>
+</html>

@@ -3,13 +3,31 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+<ui:include src="UserHeader.xhtml"/> 
+<style>
+.TableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #F5BDB1;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
 
+
+</style>
+</head>
 <h:body>
+   	<div class="heading">
+	   <h3 class="text-center"><h:outputText value="Bus's Travel Show "/></h3>
+	    <h:button outcome="UserHome.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
+	</div>
 	<center>
-		<h1><h:outputText value="Show All Travel's"/></h1>
-		<h4>UserID : <h:outputText value="#{userId}"/></h4>
+		
 	<h:form>
-		<h:dataTable  border="3" value="#{travelscheduleDAO.showTSchedule()}" var="e">
+		<h:dataTable  border="3" value="#{travelscheduleDAO.showTSchedule()}" var="e"
+		headerClass = "TableHeader" class="table text-center w-75 ">
 		<h:column>
 			<f:facet name="header">Starting Place</f:facet>
 			<h:outputText value="#{e.startingpoint}"/>	
@@ -28,15 +46,11 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">Book Now</f:facet>
-			<a href="Booking.xhtml?id=#{e.scheduleid}" class="btn">Book Now</a>
+			<a href="Booking.xhtml?id=#{e.scheduleid}" class="btn"><button class="btn btn-success" type="button">Book Now</button></a>
 		</h:column>
 		</h:dataTable>
 	</h:form>
 </center>
 </h:body>
-
-
-
-
 
 </html>

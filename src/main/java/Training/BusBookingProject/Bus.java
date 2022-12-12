@@ -1,5 +1,7 @@
 package Training.BusBookingProject;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+@ManagedBean
+@SessionScoped
 @Entity
 @Table(name="bus_details")
 public class Bus {

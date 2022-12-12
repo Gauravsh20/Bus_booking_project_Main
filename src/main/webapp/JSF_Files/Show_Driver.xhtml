@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<head>
+<title>Insert title here</title>
+ <ui:include src="Adminheader.xhtml"/>
+<style>
+.TableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #F5BDB1;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+</style>
+</head>    
+<h:body>
+	<div class="heading">
+	   <h3 class="text-center"><h:outputText value="Bus Records"/></h3>
+	   <a href="../Adminheader.jsp" class="btn btn-success ml-5">BacK</a>
+		<h:button outcome="addDriver.xhtml?faces-redirect=true" value="ADD" class="btn btn-primary ml-5" type="button"/>
+	</div>
+	<center>
+		
+	<h:form>
+		<h:dataTable  border="3" value="#{busDAO.show()}" var="e" headerClass = "TableHeader" class="table text-center w-75 ">
+		<h:column>
+			<f:facet name="header">Driver Name</f:facet>
+			<h:outputText value="#{e.driver_name}"/>	
+		</h:column>
+		<h:column>
+			<f:facet name="header">Contact No.</f:facet>
+			<h:outputText value="#{e.contact_no}"/>
+		</h:column>
+			<h:column>
+			<f:facet name="header">Status</f:facet>
+			<h:outputText value="#{e.driverstatus}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Driver_lic_no</f:facet>
+			<h:outputText value="#{e.driver_lic_no}"/>
+		</h:column>
+			<h:column>
+			<f:facet name="header">Delete</f:facet>
+			<a href="../DeleteDriver_2.jsp?id=#{e.driver_id}"><button class="btn btn-danger" type="button">delete</button></a>
+		</h:column>
+		</h:dataTable>
+	</h:form>
+</center>
+</h:body>
+</html>

@@ -8,13 +8,13 @@
 <ui:include src="./WebHeader.xhtml"/> 
 </head>
 <h:body>
-      <h1 class="text-center">User Authentication Form</h1>
+      <h1 class="text-center">Admin Authentication Form</h1>
     <h:form class="text-center mt-5">
    		 User Name : 
-        <h:inputText value="#{user.username}" id="u" /> <br/><br/>
+        <h:inputText value="#{admin.adminName}" id="u" /> <br/><br/>
         Password : 
-        <h:inputSecret value="#{user.password}" id="p"/> <br/><br/>
-        <h:commandButton id="error" value="Login" action="#{jsfDAO.checkUsers(user)}" />
+        <h:inputSecret value="#{admin.password}" id="p"/> <br/><br/>
+        <h:commandButton id="error" value="Login" action="#{jsfDAO.checkAdmin(admin)}" />
       </h:form>
        <h:messages id="error" style = "color:red;margin:8px;" />
     </h:body>

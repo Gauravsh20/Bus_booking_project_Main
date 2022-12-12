@@ -1,6 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<title>Login Form</title>
+
+<head>
+
 <jsp:include page="AdminUser.jsp"/>
+<title>Add Bus</title>
+<script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 var setInterval_ID = setInterval(my_alert_func, 2000);
 
@@ -8,14 +14,25 @@ function my_alert_func()
 {
 	document.getElementById("error").innerHTML=null;
 }
+$("#busNo").blur(function(){
+	var regName = /^[a-zA-Z]+(?(\d{3})\)$/ ;
+	alert("hello");
+    var name = document.getElementById('busNo').value;
+    if(!regName.test(name)){
+    	$("#error").html("**Invalid Bus No.");
+    	$("#busNo").val(""); 
+    	var setInterval_ID = setInterval(my_alert_func, 6000); 
+        
+    }
+
+});
 </script>
-
-
+</head>
 <body>
      <h1 class="text-center text-capitalize">Bus Details</h1>
      <form method="get" action="AddBus.jsp" class="text-center">
          Bus No :
-            <input type="text" name="busNo"/> <br/><br/> 
+            <input type="text" id="busNo" name="busNo"/> <br/><br/> 
          Bus Type :
             <select name="busType" required="required">
 						<option value="AC">AC</option>

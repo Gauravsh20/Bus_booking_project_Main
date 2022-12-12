@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+<ui:include src="Adminheader.xhtml"/> 
+</head>
+<h:body>
+ <h:button outcome="ShowBus.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
+   <h1 class="text text-center text-justify">Add Bus</h1>
+   <h:form class="text text-center mt-5">
+     Bus No :
+     <h:inputText value="#{bus.busNo}" id="busNo"/> <br/><br/>
+     Bus Type :
+     <h:inputText value="#{bus.busType}" id="busType" /> <br/><br/>
+     ServiesType :
+     <h:inputText value="#{bus.serviesType}" id="serviesType"/> <br/><br/>
+     NoOfSeats :
+     <h:inputText value="#{bus.noOfSeats}" id="noOfSeats" />  <br/><br/>
+     
+     <h:commandButton value="Save" class="btn btn-primary" action="#{busDAO.addBus(bus)}" />
+       
+   </h:form>
+</h:body>
+</html>

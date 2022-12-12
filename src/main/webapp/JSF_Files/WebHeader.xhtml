@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>     
+<link rel="stylesheet" href="../Css/Home.css"/>
+<link rel="stylesheet" href="../Css/bootstrap.css"/>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="js/jquery-3.5.1.js"></script>
+<script src="js/bootstrap.js"></script>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container" align="center">
+  <div class="row">
+   	<div class="col-3">
+   		 <img src="../image/bus.png" alt="Italian Trulli"/>
+    </div>
+ 	 <div class="col-6">
+    	<h1 class="display-5" id="main_Heading">Bus Booking System</h1>
+    </div>
+    <div class="col-3" id="Logbtn">
+    	<h:button outcome="AddUser.xhtml?faces-redirect=true" value="Sign Up" class="btn btn-primary mr-2" type="button"/>
+    	<h:button outcome="Login.xhtml?faces-redirect=true" value="Sign In" class="btn btn-success mr-2" type="button"/>
+    	<h:button outcome="Adminlogin?faces-redirect=true" value="Admin" class="btn btn-danger" type="button"/>
+   </div>
+   </div>  
+</div>
+</div>
+</body>
+</html>

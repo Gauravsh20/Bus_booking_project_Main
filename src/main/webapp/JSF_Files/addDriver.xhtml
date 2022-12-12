@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:include src="Adminheader.xhtml"/> 
+	<div class="heading">
+	   <h3 class="text-center"><h:outputText value="Driver Records"/></h3>
+	    <h:button outcome="Show_Driver.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
+			
+	</div>
+
+<center>
+<h:form>
+Driver Name:
+<h:outputLabel for="driver_name"/>
+	<h:inputText value="#{d.driver_name}" id="driver_name"/> <br></br><br/>
+Driver License:
+	<h:inputText value="#{d.driver_lic_no}" id="driver_lic_no"/>	 <br></br><br/>
+Driver Contact No:
+	<h:inputText value="#{d.contact_no}" id="contact_no"/> <br></br><br/>
+ <h:commandButton value="Save" class="btn btn-primary" action="#{busDAO.addDriver(d)}" />
+ 
+</h:form>
+</center>
+</h:body>
+
+</html>

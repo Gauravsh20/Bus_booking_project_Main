@@ -24,7 +24,7 @@ public class BusDAO {
 	
 	SessionFactory sessionFactory;
 	
-	public List<Bus> showBus(String bus){
+	public List<Bus> showBus(){
 		sessionFactory = SessionHelper.getConnection();
 		Session session=sessionFactory.openSession();
 		Query query = session.createQuery("from Bus");

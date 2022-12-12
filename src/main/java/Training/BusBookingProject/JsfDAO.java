@@ -33,6 +33,7 @@ public class JsfDAO{
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(usrLst.size()==1) {
 			context.getExternalContext().getSessionMap().put("userId", usrLst.get(0).getUserid());
+			context.getExternalContext().getSessionMap().put("username", usrLst.get(0).getUsername());
 			return "/JSF_Files/Show_Travels.xhtml?faces-redirect=true";
 			
 		}
@@ -42,6 +43,32 @@ public class JsfDAO{
 		}
 		return "/JSF_Files/Login.xhtml?faces-redirect=true";
 	}
+	
+	
+	public String checkAdmin(Admin admin) {
+		sessionFactory = SessionHelper.getConnection();
+		Session session = sessionFactory.openSession();
+		Criteria cr = session.createCriteria(Admin.class);
+		cr.add(Restrictions.eq("adminName", admin.getAdminName()));
+		cr.add(Restrictions.eq("password", admin.getPassword()));
+		List<Admin> adminLst = cr.list();
+		System.out.println(adminLst.size());
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(adminLst.size()==1) {
+			context.getExternalContext().getSessionMap().put("userId", adminLst.get(0).getAdminName());
+			context.getExternalContext().getSessionMap().put("username", adminLst.get(0).getAdminId());
+			return "/JSF_Files/AdminHomePage.xhtml?faces-redirect=true";
+			
+		}
+		else {
+              context.addMessage(null,new FacesMessage("Invalid User"));
+			
+		}
+		return "/JSF_Files/Login.xhtml?faces-redirect=true";
+	}
+	
+	
+	
 	
 	
 	public String generateBookingId() {

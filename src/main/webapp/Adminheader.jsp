@@ -73,7 +73,7 @@ padding-top:3ex;
 <div class="container-fluid">
 	<div class="row" id="mainbtn">
 		<div class="col-3 ">
-			<a href="Show_Driver.xhtml"><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Bus's</h2></button></a>
+			<a href="ShowDriver.jsp"><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Bus's</h2></button></a>
 		</div>
 		<div class="col-3">
 			<a href="ShowDriver.jsp"><button class="btn" id="funcbtn" style="background-color: #caf75f" type="button"><h2>Driver's</h2></button></a>
