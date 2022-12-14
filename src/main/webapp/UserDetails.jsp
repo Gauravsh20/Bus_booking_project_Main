@@ -1,6 +1,6 @@
 <%@page import="Training.BusBookingProject.User"%>
 <%@page import="Training.BusBookingProject.UserDAO"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="HeaderHm.jsp"/>
 <head>
 <title>Register Page</title>
@@ -64,15 +64,15 @@ $(function(){
 		 if (str.match(/[a-z]/g) && str.match(
          /[A-Z]/g) && str.match(
          /[0-9]/g) && str.match(
-         /[^a-zA-Z\d]/g) && str.length >= 8){
+         /[^a-zA-Z\d]/g) && str.length >=8 && str.length <=15){
 			 $("#error1").html("**Strong password");
-			 var setInterval_ID = setInterval(my_alert_func1, 6000); 
+			 var setInterval_ID = setInterval(my_alert_func1, 10000); 
 			 }
 		 else
 	 		{
 		 		$("#error").html("**Invalid password  e.g Gau@12gau");
 			 $("#password").val(""); 
-	    	var setInterval_ID = setInterval(my_alert_func, 10000); 
+	    	var setInterval_ID = setInterval(my_alert_func, 20000); 
 	        
 	        }
 
@@ -104,10 +104,12 @@ margin-left:-20ex;
 </style>
 </head>
 <h1 id="">New User Details</h1>
+<c:out value="${param.result}"/>
 <div class="container-fluid">
 <div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
 <div id="error1" style="color:green; text-align: center; font-weight: bolder;"></div>
 <div class="row">
+
 	<div class="col-7">
 	<form method="post" action="" name="myForm">	
 	<div class="row">
@@ -165,7 +167,7 @@ margin-left:-20ex;
 		</div>
 	</div>
 	<div class="row">
-	<input type="submit" id="submitForm" value="Submit" onclick="validateForm()" />
+	<input type="submit" id="submitForm" value="Submit"/>
 		
 	</div>	
 	</form>
@@ -176,8 +178,9 @@ margin-left:-20ex;
 		<jsp:useBean id="beanDao" class="Training.BusBookingProject.UserDAO"/>
 		<jsp:useBean id="users" class="Training.BusBookingProject.User"/>
 		<jsp:setProperty property="*" name="users"/>
-		<c:set value="${beanDao.Adduser(users)}"/>
+		<c:set var="result" value="${beanDao.Adduser(users)}" scope="page"/>
 	</c:if>
+	
 	<div class="col-5">
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 		<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_fgvmiyev.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;"  loop  autoplay></lottie-player>		

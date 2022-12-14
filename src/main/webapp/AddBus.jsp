@@ -30,6 +30,7 @@ $("#busNo").blur(function(){
 </head>
 <body>
      <h1 class="text-center text-capitalize">Bus Details</h1>
+     <a href="ShowBus.jsp"><button type="button" class="btn btn-primary m-3">Back</button></a> 
      <form method="get" action="AddBus.jsp" class="text-center">
          Bus No :
             <input type="text" id="busNo" name="busNo"/> <br/><br/> 

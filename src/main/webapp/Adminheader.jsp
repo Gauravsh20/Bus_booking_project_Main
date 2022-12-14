@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Bus Booking System</title>
 <link rel="stylesheet" href="Css/Home.css">
 <link rel="stylesheet" href="Css/bootstrap.css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -73,7 +73,7 @@ padding-top:3ex;
 <div class="container-fluid">
 	<div class="row" id="mainbtn">
 		<div class="col-3 ">
-			<a href="ShowDriver.jsp"><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Bus's</h2></button></a>
+			<a href="ShowBus.jsp"><button class="btn" id="funcbtn" style="background-color: #f75f5f" type="button"><h2>Bus's</h2></button></a>
 		</div>
 		<div class="col-3">
 			<a href="ShowDriver.jsp"><button class="btn" id="funcbtn" style="background-color: #caf75f" type="button"><h2>Driver's</h2></button></a>

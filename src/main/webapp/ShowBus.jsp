@@ -6,12 +6,12 @@ thead{
 background-color:F5BDB1;
 }
 </style>
-
 <body>
      <form method="get" action="ShowBus.jsp">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
           <div class="heading">
-          <h1 class="text-center">Show All Bus's</h1>  
+          <h1 class="text-center">Show All Bus's</h1> 
+          <a href="Adminheader.jsp"><button type="button" class="btn btn-primary m-3">Back</button></a> 
       		<a href="AddBus.jsp"><button type="button" class="btn btn-success m-3">Add Bus</button></a>
       		<h6 class="text-danger text-center">** Booked Bus Not Deleted </h6> 
           </div>
@@ -30,7 +30,7 @@ background-color:F5BDB1;
               <th>Delete</th>
             </tr>
             </thead>
-           <c:forEach var="showBus" items="${beanDao.showBus(bus)}" >
+           <c:forEach var="showBus" items="${beanDao.showBus()}" >
               <tr>
                  <td><c:out value="${showBus.busId}"/></td>
                  <td><c:out value="${showBus.busNo}"/></td>

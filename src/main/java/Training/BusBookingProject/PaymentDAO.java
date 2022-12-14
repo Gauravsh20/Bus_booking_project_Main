@@ -133,6 +133,7 @@ Session session;
 		}
 			 Transaction tr=session.beginTransaction();
 			 booking.setBookingStatus(BookingStatus.CANCELLED);
+			 booking.setSeatNo(0);
 			 session.update(booking);
 			 tr.commit();
 			 return "delete...";
