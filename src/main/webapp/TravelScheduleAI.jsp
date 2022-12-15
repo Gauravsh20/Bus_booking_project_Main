@@ -4,9 +4,11 @@
 <jsp:include page="AdminUser.jsp"/>
 <body>
 <body>
+<a href="ShowTSchedule.jsp" class="btn btn-success ml-5">BacK</a>
 <center>
 <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
 	<h1>Add Travel Schedule</h1>
+	
 	<form action="">
 		Available Bus's :
 		<select name="busid">

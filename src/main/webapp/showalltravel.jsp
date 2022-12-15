@@ -171,7 +171,7 @@ display: none;
 <input type="date" id="datefilterfrom" data-date-split-input="true"> 
 <button type="button" class="btn btn-success m-3" onclick="myFunctionfinal()">Search</button> 
 </div>	
-        <jsp:useBean id="beanDao" class="Training.BusBookingProject.TravelscheduleDAO"/>
+        <jsp:useBean id="beanDao" class="Training.BusBookingProject.NewFeature"/>
           <div class="heading">
           </div>
          <table border="3" align="center" id="myTable">
@@ -191,7 +191,7 @@ display: none;
             </tr>
             </thead>
             <tbody>
-           <c:forEach var="showBus" items="${beanDao.showTravel()}" >
+           <c:forEach var="showBus" items="${beanDao.AvailableBus()}" >
               <tr>
                  <td><c:out value="${showBus.startingpoint}"/></td>
                  <td><c:out value="${showBus.destinationpoint}"/></td>

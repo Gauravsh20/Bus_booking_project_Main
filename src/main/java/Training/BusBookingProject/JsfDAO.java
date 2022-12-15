@@ -34,14 +34,14 @@ public class JsfDAO{
 		if(usrLst.size()==1) {
 			context.getExternalContext().getSessionMap().put("userId", usrLst.get(0).getUserid());
 			context.getExternalContext().getSessionMap().put("username", usrLst.get(0).getUsername());
-			return "/JSF_Files/Show_Travels.xhtml?faces-redirect=true";
+			return "/JSF_Files/UserHome.xhtml?faces-redirect=true";
 			
 		}
 		else {
               context.addMessage(null,new FacesMessage("Invalid User"));
 			
 		}
-		return "/JSF_Files/Login.xhtml?faces-redirect=true";
+		return "/JSF_Files/AddUser.xhtml?faces-redirect=true";
 	}
 	
 	
@@ -62,9 +62,9 @@ public class JsfDAO{
 		}
 		else {
               context.addMessage(null,new FacesMessage("Invalid User"));
-			
+              return "/JSF_Files/AddUser.xhtml?faces-redirect=true";
 		}
-		return "/JSF_Files/Login.xhtml?faces-redirect=true";
+		
 	}
 	
 	
@@ -129,5 +129,7 @@ public class JsfDAO{
 		List<Booking> leavelist1 = query.list();
 		return leavelist1;
 	}
+	
+	
 	
 }

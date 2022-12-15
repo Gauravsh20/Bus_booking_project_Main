@@ -12,8 +12,10 @@ function my_alert_func()
 
 </script>
 <body>
+  			 <jsp:useBean id="beanN" class="Training.BusBookingProject.BusDAO"/>
+		   
        <h1 class="text-center m-3">Bus Details</h1>
-       
+     <c:set var="hh" value="${param.bsid}"></c:set>
      <form method="get" action="UpdateBus.jsp" class="text-center">
          Bus Id :
             <input type="text" name="busId" value="${param.bsid}"/> <br/><br/> 
@@ -36,10 +38,12 @@ function my_alert_func()
 		NoOf Seats :
 		 <input type="number" name="noOfSeats"/> <br/><br/>  
 		 Status : 
-		 <input type="text" name="busstatus" readonly="readonly" value="${param.status}"/> <br/><br/>  
+		 
+		 <input type="text" name="busstatus" readonly="readonly" value="${param.status}"/> <br/><br/>
 		 <button  type="submit" class="btn btn-primary">Update Bus</button>
 				
      </form>
+     
      <c:if test="${param.busNo!=null}">
       <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
       <jsp:useBean id="bus" class="Training.BusBookingProject.Bus"/>

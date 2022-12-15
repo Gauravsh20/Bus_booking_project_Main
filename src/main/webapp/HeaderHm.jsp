@@ -21,9 +21,9 @@
     	<h1 class="display-5" id="main_Heading">Bus Booking System</h1>
     </div>
     <div class="col-3" id="Logbtn">
-   		<a href="UserDetails.jsp"><button class="btn btn-danger" type="button">Sign up</button></a>
+   		<a href="JSF_Files/AddUser.xhtml"><button class="btn btn-danger" type="button">Sign up</button></a>
    		<a href="userCheck.jsp"><button class="btn btn-success" type="button">Sign in</button></a>
-   		<a href="Admin.jsp"><button class="btn btn-dark" type="button">Admin</button></a>
+   		<a href="JSF_Files/Adminlogin.xhtml"><button class="btn btn-dark" type="button">Admin</button></a>
    </div>
    </div>  
 </div>

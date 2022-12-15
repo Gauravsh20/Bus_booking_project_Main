@@ -2,27 +2,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Bus Booking System</title>
+<ui:include src="./WebHeader.xhtml"/>
+<link rel="stylesheet" href="../Css/FormDetail.css"/> 
+<script src="../js/jquery-3.5.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script>
+  function validateEmail(form)
+  {
+      var idstr=form["formname:emailaddress"].value;
+      var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+       if(idstr.match(mail))
+       {
+            return true;
+              }
+            else
+              {
+              alert("invalid mailid");
+              form["formname:emailaddress"].value=" ";
+              return false;
+              }
+
+  }
+</script>
 </head>
 <h:body>
-   <h1>Create User</h1>
-   <h:form>
-     FullName :
-     <h:inputText value="#{user.fullname}" id="fullname"/> <br/><br/>
-     Contactno :
-     <h:inputText value="#{user.contactno}" id="contactno" /> <br/><br/>
-     EmailAddress :
-     <h:inputText value="#{user.emailaddress}" id="emailaddress"/> <br/><br/>
-     UserName :
-     <h:inputText value="#{user.username}" id="username" />  <br/><br/>
-     Password :
-     <h:inputText value="#{user.password}" id="password" /> <br/><br/>
-     
-     <h:commandButton value="Save" action="#{userDAO.Adduser(user)}" />
-       
-   </h:form>
+<h1 class="text text-center text-justify">Add User</h1>
+<div class="container-fluid">
+<div class="row">
+	<div class="col-6">
+<h:form class="text text-center" id="formname">
+    <div class="row">
+		<div class="col-30">
+		<label for="fname">Full Name :</label>
+		</div>	
+			<h:inputText value="#{user.fullname}" id="fullname" required="true"
+      		requiredMessage="Name is Mandatory" /><br/><br/>
+
+		</div>
+		<h4><h:message for="fullname" style="color :red;"/></h4>
+
+       <div class="row">
+			<div class="col-30">
+				<label for="fname">Contact No :</label>
+			</div>
+			<h:inputText value="#{user.contactno}" id="contactno" 
+      			validator="#{jsfUserDAO.validatePhnNo}" required="true" requiredMessage="ContactNumber is Mandatory"/> <br/><br/>
+		</div>
+		<h4><h:message for="contactno" style="color : red;"/></h4>
+		
+  	    <div class="row">
+			<div class="col-30">
+				<label for="fname">Email :</label>
+			</div>
+			<h:inputText value="#{user.emailaddress}" id="emailaddress" name="emailaddress"
+     			 validator="#{jsfUserDAO.validateEmail}" required="true" requiredMessage="Email is Mandatory"
+     			 onblur="validateEmail(this.form)"/><br/><br/>
+			</div>
+			<h4><h:message for="emailaddress" style="color : red;"/></h4>
+			
+     		<div class="row">
+			  <div class="col-30">
+				<label for="fname">User Name :</label>
+			</div>
+			<h:inputText value="#{user.username}" id="username" required="true" 
+    			 requiredMessage="Name is Mandatory"/><br/><br/>
+    		</div>
+			<h4><h:message for="username" style="color : red;"/></h4>
+    		 <div class="row">
+			  <div class="col-30">
+				<label for="fname">Password :</label>
+			</div>
+			<h:inputText value="#{user.password}" id="password" 
+    			 validator="#{jsfUserDAO.validatePassword}" required="true" requiredMessage="password is Mandatory"/><br/><br/>
+    		</div>
+<h4><h:message for="password" style="color : red;"/></h4>
+<h:commandButton value="Save" class="btn btn-primary" action="#{jsfUserDAO.Adduser(user)}" />
+
+</h:form>
+</div>
+		<div class="col-5">
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<img src="../image/busgif.gif" id="gg" alt="Italian Trulli"/>			
+		</div>	
+
+</div>
+</div>
 </h:body>
 </html>

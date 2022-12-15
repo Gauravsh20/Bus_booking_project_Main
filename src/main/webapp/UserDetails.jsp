@@ -183,7 +183,7 @@ margin-left:-20ex;
 	
 	<div class="col-5">
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-		<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_fgvmiyev.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;"  loop  autoplay></lottie-player>		
+		<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_fgvmiyev.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;" loop  autoplay></lottie-player>		
 	</div>	
 	        
         	

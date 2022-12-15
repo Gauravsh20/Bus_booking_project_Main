@@ -15,13 +15,19 @@
    border-bottom:1px solid #000000;  
    padding:2px;
 }
+
+.red { color:#cc0000; 
+font-weight: bold;
+} 
+.blue { color: #0000cc; 
+font-weight: bold;}
 </style>
 </head>    
 <h:body>
 	<div class="heading">
-	   <h3 class="text-center"><h:outputText value="Bus Records"/></h3>
-	   <a href="../Adminheader.jsp" class="btn btn-success ml-5">BacK</a>
-		<h:button outcome="addDriver.xhtml?faces-redirect=true" value="ADD" class="btn btn-primary ml-5" type="button"/>
+	   <h3 class="text-center"><h:outputText value="Driver's Record"/></h3>
+	   <a href="AdminHomePage.xhtml" class="btn btn-success ml-5">BacK</a>
+		<a href="../AddDriver.jsp" class="btn btn-primary ml-5">Add</a>
 	</div>
 	<center>
 		
@@ -37,11 +43,15 @@
 		</h:column>
 			<h:column>
 			<f:facet name="header">Status</f:facet>
-			<h:outputText value="#{e.driverstatus}"/>
+			 <h:outputText name="cod" id="cod" styleClass="#{e.driverstatus == 'AVAILABLE' ? 'red': 'blue'}" value="#{e.driverstatus}"/>
 		</h:column>
 		<h:column>
 			<f:facet name="header">Driver_lic_no</f:facet>
 			<h:outputText value="#{e.driver_lic_no}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Update</f:facet>
+			<a href="../UpdateDriver.jsp?DId=#{e.driver_id}&amp;DStatus=#{e.driverstatus}" ><button class="btn btn-success" type="button">Update</button></a>
 		</h:column>
 			<h:column>
 			<f:facet name="header">Delete</f:facet>

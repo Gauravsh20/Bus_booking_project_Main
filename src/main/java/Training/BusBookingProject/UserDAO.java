@@ -207,6 +207,11 @@ public class UserDAO {
 	
 	
 	public List<Integer> book(String id) {
+		TravelscheduleMain tst=Busid(id);
+		String busId=tst.getBusid();
+		BusDAO dao=new BusDAO();
+		Bus bus=dao.SearchBusId(busId);
+		int Bus_ID=bus.getNoOfSeats();
 		List<Booking> booking = seats(id);
 		List<Integer> seat = new ArrayList<Integer>();
 		List<Integer> seat2 = new ArrayList<Integer>();
@@ -215,7 +220,7 @@ public class UserDAO {
 			int a = bookings.getSeatNo();
 			seat.add(a);
 		}
-		for (int i = 1; i <= 20; i++) {
+		for (int i = 1; i <=Bus_ID; i++) {
 			if (!seat.contains(i)) {
 				seat2.add(i);
 			}
@@ -405,6 +410,16 @@ public class UserDAO {
 			
 		}
 	 
+	  public TravelscheduleMain Busid (String s_id) {
+		  sessionFactory=SessionHelper.getConnection();
+			 Session session=sessionFactory.openSession();
+			 Query query = session.createQuery("FROM TravelscheduleMain T WHERE T.scheduleid =:scheduleid").setParameter("scheduleid",s_id);
+			 List<TravelscheduleMain>lst = query.list();
+			 return lst.get(0);
+		  
+	  }
+
+
 	 
 	 
 	

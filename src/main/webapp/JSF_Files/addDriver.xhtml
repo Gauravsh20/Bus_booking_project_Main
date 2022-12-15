@@ -14,13 +14,12 @@
 <center>
 <h:form>
 Driver Name:
-<h:outputLabel for="driver_name"/>
-	<h:inputText value="#{d.driver_name}" id="driver_name"/> <br></br><br/>
+	<h:inputText value="#{Driver_Details.driver_name}" id="driver_name"/> <br></br><br/>
 Driver License:
-	<h:inputText value="#{d.driver_lic_no}" id="driver_lic_no"/>	 <br></br><br/>
+	<h:inputText value="#{Driver_Details.driver_lic_no}" id="driver_lic_no"/>	 <br></br><br/>
 Driver Contact No:
-	<h:inputText value="#{d.contact_no}" id="contact_no"/> <br></br><br/>
- <h:commandButton value="Save" class="btn btn-primary" action="#{busDAO.addDriver(d)}" />
+	<h:inputText value="#{Driver_Details.contact_no}" id="contact_no"/> <br></br><br/>
+ <h:commandButton value="Save" class="btn btn-primary" action="#{busDAO.addDriver(Driver_Details)}" />
  
 </h:form>
 </center>

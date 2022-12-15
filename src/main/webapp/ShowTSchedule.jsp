@@ -7,12 +7,15 @@ background-color:F5BDB1;
 }
 </style>
 <body>
+
    <form method="get" action="ShowTSchedule.jsp">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.TravelscheduleDAO"/>
           <div class="heading">
            <h1 class="text-center">Show All TravelSchedule</h1>   
              <h6 class="text-danger text-center">**Someitems Not Delete, So it's Running the Travel </h6> 
-      		<a href="TravelScheduleAI.jsp"><button class="btn btn-success m-5" type="button">Add</button></a>
+              <a href="JSF_Files/AdminHomePage.xhtml" class="btn btn-success ml-5">BacK</a>
+      		<a href="TravelScheduleAI.jsp"><button class="btn btn-primary m-5" type="button">Add</button></a>
+      		
           </div>
           
                

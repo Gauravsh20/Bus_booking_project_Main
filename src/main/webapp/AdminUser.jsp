@@ -29,6 +29,15 @@ padding-top: 10ex;
 text-align:right;
 padding-top:3ex;
 }
+.navbar-brand{
+font-weight:900;
+font-size: large;
+}
+.navbar-light .navbar-nav .nav-link.active{
+color:white;
+font-weight: bolder;
+font-size: large;
+}
 </style>
 <body>
 <div class="jumbotron jumbotron-fluid mb-0">
@@ -41,7 +50,7 @@ padding-top:3ex;
     	<h1 class="display-5" id="main_Heading">Bus Booking System</h1>
     </div>
     <div class="col-3" id="Logbtn">
-   		<a href="Logout"><button class="btn btn-danger" type="button">Log Out</button></a>
+   		<a href="Logoutxhtml"><button class="btn btn-danger" type="button">Log Out</button></a>
    </div>
 
    </div>
@@ -57,10 +66,7 @@ padding-top:3ex;
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="Adminheader.jsp">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="AdminForgetPassword.jsp">Change Password</a>
+          <a class="nav-link active" aria-current="page" href="JSF_Files/AdminHomePage.xhtml">Home</a>
         </li>
       </ul>
     </div>

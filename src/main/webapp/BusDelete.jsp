@@ -12,6 +12,6 @@
 <jsp:useBean id="dao" class="Training.BusBookingProject.BusDAO"/>
     <c:set var="bid" value="${param.id}"/>
    	<c:out value="${dao.deleteBus(bid)}"/>
-   	 <c:redirect url="ShowBus.jsp?"/>
+   	 <c:redirect url="JSF_Files/ShowBus.xhtml"/>
 </body>
 </html>

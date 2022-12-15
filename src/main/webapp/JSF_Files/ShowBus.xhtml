@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<title>Bus Booking System</title>
   <ui:include src="Adminheader.xhtml" />
 <style>
 .TableHeader {
@@ -15,6 +15,8 @@
    border-bottom:1px solid #000000;  
    padding:2px;
 }
+.red { color:#cc0000; } 
+.blue { color: #0000cc; }
 </style>
 </head>
 
@@ -53,14 +55,20 @@
                 </h:column>
                     <h:column>
                     <f:facet name="header">Bus Status</f:facet>
-                    <h:outputText class="text-danger font-weight-bold text-center" value="#{e.busstatus}"/>
+                    <h:outputText name="cod" id="cod" styleClass="#{e.busstatus == 'AVAILABLE' ? 'red': 'blue'}" value="#{e.busstatus}"/>
+                    <!-- <h:outputText class="text-danger font-weight-bold text-center" value="#{e.busstatus}"/> -->
                 </h:column>
                 
           <h:column>
          <f:facet name="header">Update</f:facet>
-       <h:commandButton class="btn btn-success" type="button" action="#{busDAO.SearchBusId(e.busId)}"
-           value="Update"></h:commandButton>
-         </h:column>       
+         <a href="../UpdateBus.jsp?bsid=#{e.busId}&amp;status=#{e.busstatus}"><button class="btn btn-success" type="button">Update</button></a>
+      <!--  <h:commandButton class="btn btn-success" type="button" action="#{busDAO.SearchBusId(e.busId)}"
+           value="Update"></h:commandButton> -->
+         </h:column>
+          <h:column>
+         <f:facet name="header">Delete</f:facet>
+      		<a href="../BusDelete.jsp?id=#{e.busId}"><button class="btn btn-danger" type="button">Delete</button></a>
+         </h:column>        
         </h:dataTable>
        </center>
         </h:form>
