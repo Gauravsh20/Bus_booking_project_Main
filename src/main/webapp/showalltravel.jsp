@@ -157,6 +157,10 @@ display: none;
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
 }
+
+#username{
+    margin-left:80ex;
+}
 </style>
 
 
@@ -164,7 +168,7 @@ display: none;
 
 <h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">All Bus's</h1>
 <div class="text-center">
-<a href="UserHome.jsp"><button type="button" class="btn btn-primary m-3">Back</button></a> 
+<a href="JSF_Files/UserHome.xhtml"><button type="button" class="btn btn-primary m-3">Back</button></a> 
 <input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Search for Source">
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Destination">
 

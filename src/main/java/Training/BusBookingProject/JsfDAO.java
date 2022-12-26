@@ -38,10 +38,10 @@ public class JsfDAO{
 			
 		}
 		else {
-              context.addMessage(null,new FacesMessage("Invalid User"));
+			context.addMessage("formname:error", new FacesMessage("Invalid User"));
+            return null;
 			
 		}
-		return "/JSF_Files/AddUser.xhtml?faces-redirect=true";
 	}
 	
 	
@@ -61,8 +61,8 @@ public class JsfDAO{
 			
 		}
 		else {
-              context.addMessage(null,new FacesMessage("Invalid User"));
-              return "/JSF_Files/AddUser.xhtml?faces-redirect=true";
+              context.addMessage("formname:username", new FacesMessage("Invalid User"));
+              return null;
 		}
 		
 	}

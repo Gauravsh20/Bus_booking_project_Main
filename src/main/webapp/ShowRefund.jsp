@@ -8,9 +8,17 @@ margin-top: 5ex;
 thead{
 background-color:F5BDB1;
 }
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
 </style>
 <body>
-<h1 class="text-center">Show All Refunds</h1>  
+
+<h3 class="text-center">Show All Refunds</h3>  
+<a href="JSF_Files/AdminHomePage.xhtml" class="btn btn-success ml-5">BacK</a>
       <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
       <table border="3" align="center">
       <thead>

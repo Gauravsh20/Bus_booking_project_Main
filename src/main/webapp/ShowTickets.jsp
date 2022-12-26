@@ -39,7 +39,7 @@
                  
                  <td>
                  <c:if test="${showBus.bookingStatus != 'APPROVED' && showBus.bookingStatus!='CANCELLED'}">
-                	 <a href="paymentDetail.jsp?bookingId=${showBus.bookingId}&userid=${param.id}&amt=${showBus.totalAmount}"><button class="btn btn-success">Payment</button></a>
+                	 <a href="paymentDetail.jsp?bookingId=${showBus.bookingId}&userid=${uu}&amt=${showBus.totalAmount}"><button class="btn btn-success">Payment</button></a>
                  </c:if>
                  
                  </td>

@@ -33,6 +33,16 @@
 <jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
 <jsp:useBean id="BusDAO" class="Training.BusBookingProject.BusDAO"/>
 <jsp:useBean id="TravelDAO" class="Training.BusBookingProject.TravelscheduleDAO"/>
+
+<form action="">
+	<input type="text" name="answer" placeholder="number of persons"/>
+	<input type="text" name="scheduleid" value="${param.scheduleid}" readonly="readonly"/>
+	<input type="text" name="userid" value="${param.userid}" readonly="readonly"/>
+	<input type="submit" value="save">
+
+</form>
+<c:if test="${param.answer != null}">
+
 <c:set var="tra" value="${param.scheduleid}"/>
 		<c:if test="${param.seatNo == null }">
 				<c:set var="travel" value="${TravelDAO.SearchTravelId(tra)}"/>
@@ -40,8 +50,9 @@
 		<c:set var="bid" value="${travel.busid}"/>
   		
   		<h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">Booking</h1>
+  		<a href="showalltravel.jsp" class="btn btn-success ml-5">BacK</a>
   		<div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
- 		<center>
+
  		<div class="container-fluid ">
  		
  		
@@ -57,7 +68,7 @@
              <thead>
                 <tr>
                   <th>Passenger_name   </th>
-                  <th><input type="text" name="pname" id="pname" required="required"/></th>
+                  <th><input type="text" name="pname" id="pname" required="required" pattern="[a-zA-Z]*" /></th>
                 </tr>
             </thead>
              <thead>
@@ -109,7 +120,6 @@
  			
        </form>
        </div>
-       </center>
       <c:if test="${param.pname != null}">
       <c:set var="travel" value="${TravelDAO.SearchTravelId(tra)}"/>
       <c:set var="f" value="${(travel.fareamount*3)/10+travel.fareamount}"/>
@@ -124,8 +134,8 @@
     <jsp:setProperty property="totalAmount" name="book" value="${f}"/>
     <jsp:setProperty property="seatNo" name="book" value="${param.seatNo}"/>
     <c:out value="${Dao.addBooking(book)}"/>
-    <c:redirect url="ShowTickets.jsp?id=${userid}"></c:redirect>
+    <c:redirect url="ShowTickets.jsp?id=${param.userid}"></c:redirect>
 </c:if>
-
+</c:if>
 </body>
 </html>

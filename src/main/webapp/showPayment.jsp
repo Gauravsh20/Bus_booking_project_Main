@@ -10,10 +10,16 @@ thead{
 background-color:F5BDB1;
 
 }
-
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
 </style>
 <body>
-<h1 class="text text-center mt-4">Show All Payments</h1>
+<h3 class="text text-center mt-4">Show All Payment</h3>
+ <a href="JSF_Files/AdminHomePage.xhtml" class="btn btn-success ml-5">BacK</a>
 <form action="showPayment.jsp" method="get" class="text-center mt-5">
 <jsp:useBean id="dao" class="Training.BusBookingProject.PaymentDAO"/>
 	<table border="3" align="center" class="table table-hover">
@@ -53,7 +59,7 @@ background-color:F5BDB1;
 	
 	</table>
 
-<a href="sucessPayments.jsp">Show SuccessFull Payments</a>
+<a href="sucessPayments.jsp"><button class="btn btn-danger" type="button">Show SuccessFull Payments</button></a>
 </form>
 
 </body>

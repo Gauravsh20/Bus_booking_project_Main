@@ -5,14 +5,20 @@
 thead{
 background-color:F5BDB1;
 }
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
 </style>
 <body>
     <form  method="get" action="ShowUser.jsp">
       <jsp:useBean id="beanDao" class="Training.BusBookingProject.UserDAO"/>
         <div class="heading">
-        <h1 class="text-center">Show All User's</h1> 
+        <h3 class="text-center">Show All User's</h3> 
           </div>
-      
+      <a href="JSF_Files/AdminHomePage.xhtml" class="btn btn-success ml-5">BacK</a>
       <table border="3" align="center" class="table mt-5 table-hover text-center">
       <thead>
          <tr>

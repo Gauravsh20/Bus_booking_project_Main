@@ -11,32 +11,42 @@ function my_alert_func()
 }
 
 </script>
+<style type="">
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
+
+</style>
 <body>
   			 <jsp:useBean id="beanN" class="Training.BusBookingProject.BusDAO"/>
 		   
-       <h1 class="text-center m-3">Bus Details</h1>
+       <h3 class="text-center m-3">Bus Details</h3>
+       <a href="JSF_Files/ShowBus.xhtml" class="btn btn-success ml-5">BacK</a>
      <c:set var="hh" value="${param.bsid}"></c:set>
      <form method="get" action="UpdateBus.jsp" class="text-center">
          Bus Id :
-            <input type="text" name="busId" value="${param.bsid}"/> <br/><br/> 
+            <input type="text" name="busId" value="${param.bsid}" readonly="readonly"/> <br/><br/> 
          Bus No :
-            <input type="text" name="busNo"/> <br/><br/>  
+            <input type="text" name="busNo" required="required"/> <br/><br/>  
          Bus Type :
-            <select name="busType">
+            <select name="busType" required="required">
 						<option value="AC">AC</option>
 						<option value="SLEEPER">SLEEPER</option>
 						<option value="SEATER">SEATER</option>
 						<option value="NON_AC">NON_AC</option>  
 					</select>  <br/><br/> 
 		Bus Services :
-		    <select name="serviesType">
+		    <select name="serviesType" required="required">
 		       <option value="REGULAR">REGULAR</option>
 		       <option value="WEEKEND">WEEKEND</option>
 		       <option value="ALTERNATE_DAYS">ALTERNATE_DAYS</option>
 		       <option value="EVENT">EVENT</option>   
 		    </select>  <br/><br/> 
 		NoOf Seats :
-		 <input type="number" name="noOfSeats"/> <br/><br/>  
+		 <input type="number" name="noOfSeats" required="required"/> <br/><br/>  
 		 Status : 
 		 
 		 <input type="text" name="busstatus" readonly="readonly" value="${param.status}"/> <br/><br/>

@@ -46,6 +46,7 @@ Session session;
 	
 	public String addPayment(PaymentDetail paymentDetail) throws IOException{
 		 	UserDAO udao=new UserDAO();
+		 	System.out.println(paymentDetail.getUserId());
 		 	Wallet wallet = udao.searchWalletByUserId(paymentDetail.getUserId());
 		 	
 		 	double bamt=paymentDetail.getAmount();
@@ -53,12 +54,11 @@ Session session;
 
 		 	
 		 	if(bamt >= amount) {
-		 		return"Insufficient wallent amount ";
+		 		return "oknot";
 		 		
 		 	}else {
 				paymentDetail.setPaymentId(paymentId());
 				paymentDetail.setPaymentStatus(PaymentStatus.SUCCESSFULL);
-				
 				sessionFactory=SessionHelper.getConnection();
 				session=sessionFactory.openSession();
 				Transaction tr = session.beginTransaction();
@@ -85,7 +85,7 @@ Session session;
 				session.update(wallet);
 				trans.commit();	
 				
-				return null;
+				return "ok";
 		 	}
 	 }
 	

@@ -5,13 +5,19 @@
 thead{
 background-color:F5BDB1;
 }
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
 </style>
 <body>
 
    <form method="get" action="ShowTSchedule.jsp">
         <jsp:useBean id="beanDao" class="Training.BusBookingProject.TravelscheduleDAO"/>
           <div class="heading">
-           <h1 class="text-center">Show All TravelSchedule</h1>   
+           <h3 class="text-center">Show All Travel Schedule</h3>   
              <h6 class="text-danger text-center">**Someitems Not Delete, So it's Running the Travel </h6> 
               <a href="JSF_Files/AdminHomePage.xhtml" class="btn btn-success ml-5">BacK</a>
       		<a href="TravelScheduleAI.jsp"><button class="btn btn-primary m-5" type="button">Add</button></a>

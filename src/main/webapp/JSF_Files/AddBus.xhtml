@@ -8,20 +8,88 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Bus Booking System</title>
 <ui:include src="Adminheader.xhtml"/> 
+  <script src="../js/jquery-3.5.1.js"></script>
+  <script src="../js/bootstrap.js"></script>
+<script>
+  function seat(form)
+{
+
+    var idstr=form["formname:noOfSeats"].value;
+    
+     if( 99>idstr)
+     {  if( idstr>12){
+    	 return true;
+         }
+     alert("select correct seat no");
+     form["formname:noOfSeats"].value=" ";
+	 return false;
+     
+            }
+          else
+            {
+            alert("select correct seat no");
+            form["formname:noOfSeats"].value=" ";
+            return false;
+            }
+  
+}
+
+   function busno(form)
+  {
+  	 
+  	var A=form["formname:busNo"].value;
+    var S =/^[A-Z0-9]+$/;
+     if(A.match(S))
+       {
+            return true;
+              }
+            else
+              {
+              alert("Give Correct Bus No");
+              form["formname:busNo"].value=" ";
+              return false;
+              } 
+  }
+  
+ </script>
+<style type="">
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
+
+</style>
 </head>
 <h:body>
- <h:button outcome="ShowBus.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
-   <h1 class="text text-center text-justify">Add Bus</h1>
-   <h:form class="text text-center mt-5">
+   <h3 class="text-center">Add Bus</h3>
+    <h:button outcome="ShowBus.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
+   <h:form class="text text-center mt-5" id="formname">
      Bus No :
-     <h:inputText value="#{bus.busNo}" id="busNo"/> <br/><br/>
+     <h:inputText value="#{bus.busNo}" id="busNo" required="true" requiredMessage="Bus No. is Mandatory" onblur="busno(this.form)"/> <br/><br/>
+     <h6><h:message for="busNo" style="color : red;"/></h6>
      Bus Type :
-     <h:inputText value="#{bus.busType}" id="busType" /> <br/><br/>
+     <h:selectOneMenu value="#{bus.busType}" id="busType">
+  			 <f:selectItem itemValue="AC" itemLabel="AC"/>
+  			 <f:selectItem itemValue="NON_AC" itemLabel="NON_AC"/>
+   			 <f:selectItem itemValue="SLEEPER" itemLabel="SLEEPER"/>
+   			 <f:selectItem itemValue="SEATER" itemLabel="SEATER"/>
+	</h:selectOneMenu><br/><br/>
+	<h6><h:message for="busType" style="color : red;"/></h6>
+     <!-- <h:inputText value="" id="busType" /> <br/><br/> -->
      ServiesType :
-     <h:inputText value="#{bus.serviesType}" id="serviesType"/> <br/><br/>
+       <h:selectOneMenu value="#{bus.serviesType}" id="serviesType">
+  			 <f:selectItem itemValue="REGULAR" itemLabel="REGULAR"/>
+  			 <f:selectItem itemValue="ALTERNATE_DAYS" itemLabel="ALTERNATE_DAYS"/>
+   			 <f:selectItem itemValue="WEEKEND" itemLabel="WEEKEND"/>
+   			 <f:selectItem itemValue="EVENT" itemLabel="EVENT"/>
+	</h:selectOneMenu><br/><br/>
+	<h6><h:message for="serviesType" style="color : red;"/></h6>
+     <!-- <h:inputText value="" id="serviesType"/> <br/><br/> -->
      NoOfSeats :
-     <h:inputText value="#{bus.noOfSeats}" id="noOfSeats" />  <br/><br/>
-     
+     <h:inputText value="#{bus.noOfSeats}" id="noOfSeats" required="true" onblur="seat(this.form)" requiredMessage="Number of Seats is Mandatory"/>  <br/><br/>
+     <h6><h:message for="noOfSeats" style="color : red;"/></h6>
      <h:commandButton value="Save" class="btn btn-primary" action="#{busDAO.addBus(bus)}" />
        
    </h:form>

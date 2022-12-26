@@ -1,14 +1,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<title>Login Form</title>
+<title>Bus Booking System</title>
 <jsp:include page="AdminUser.jsp"/>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var today = new Date();
+        var month = ('0' + (today.getMonth() + 1)).slice(-2);
+        var day = ('0' + today.getDate()).slice(-2);
+        var year = today.getFullYear();
+        var date = year + '-' + month + '-' + day;
+        $('[id*=txtdateofreservation]').attr('min', date);
+    });
+</script>
+<style>
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
+
+</style>
 <body>
-<body>
-<a href="ShowTSchedule.jsp" class="btn btn-success ml-5">BacK</a>
-<center>
+
+
 <jsp:useBean id="beanDao" class="Training.BusBookingProject.BusDAO"/>
-	<h1>Add Travel Schedule</h1>
-	
+	<h3 class="text-center">Add New Travel Schedule</h3>
+	<a href="ShowTSchedule.jsp" class="btn btn-success ml-5">BacK</a>
+	<center>
 	<form action="">
 		Available Bus's :
 		<select name="busid">
@@ -24,26 +44,26 @@
 		</c:forEach>
 		</select><br/><br/>
 		Starting Point:
-		<input type="text" name="startingpoint"><br/><br/>
+		<input type="text" name="startingpoint" required="required"><br/><br/>
 		Destination Point:
-		<input type="text" name="destinationpoint"><br/><br/>
+		<input type="text" name="destinationpoint"  required="required"><br/><br/>
 		Starting Date:
-		<input type="date" name="scheduledate"><br/><br/>
+		<input type="date" name="scheduledate" ID="txtdateofreservation" runat="server"  required="required"><br/><br/>
 		Starting time:
 		<input type="time" name="departuretime"><br/><br/>
 		End Date:
-		<input type="date" name="estimatearrivaldate"><br/><br/>
+		<input type="date" name="estimatearrivaldate" ID="txtdateofreservation" runat="server"  required="required"><br/><br/>
 		End time:
-		<input type="time" name="estimatearrivaltime"><br/><br/>
+		<input type="time" name="estimatearrivaltime"  required="required"><br/><br/>
 		Starting_Address
-		<input type="text" name="addressstart"><br/><br/>
+		<input type="text" name="addressstart"  required="required"><br/><br/>
 		End_Address
-		<input type="text" name="addressend"><br/><br/>
+		<input type="text" name="addressend"  required="required"><br/><br/>
 		Fare Amount:
-		<input type="number" name="fareamount"><br/><br/>
+		<input type="number" name="fareamount"  required="required"><br/><br/>
 		Remark:
-		<input type="text" name="remark"><br/><br/>
-		<input type="submit" value="Save"><br/><br/>
+		<input type="text" name="remark"  required="required"><br/><br/>
+		<input type="submit" class="btn btn-primary" value="Save"><br/><br/>
 	</form>
 
 </center>
@@ -75,7 +95,7 @@
 	    <jsp:setProperty property="fareamount" name="travel"/>
 		<jsp:setProperty property="remark" name="travel"/>
 		
-	<c:out value="${TravelDao.AddTrvelSchedule(travel)}"></c:out>
+	<h4 class="text-center text-danger"><c:out value="${TravelDao.AddTrvelSchedule(travel)}"></c:out></h4>
 </c:if>
 </body>
 </html>

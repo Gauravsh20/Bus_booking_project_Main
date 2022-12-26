@@ -27,7 +27,7 @@ public class NewFeature {
 		sessionFactory = SessionHelper.getConnection();
 		Session session=sessionFactory.openSession();
 //		String hql = ("FROM TravelscheduleMain T WHERE T.scheduledate > ':currentSQLDate'");
-		Query query = session.createQuery("FROM TravelscheduleMain T WHERE T.scheduledate > :currentSQLDate").setParameter("currentSQLDate", currentSQLDate());
+		Query query = session.createQuery("FROM TravelscheduleMain T WHERE T.scheduledate >= :currentSQLDate").setParameter("currentSQLDate", currentSQLDate());
 		List results = query.list();
 		return results;
 		

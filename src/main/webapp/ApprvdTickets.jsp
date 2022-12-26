@@ -4,6 +4,8 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function fun() {
+
+		
 		$("#error").html("**Successfull**");  
 	
 	}
@@ -11,6 +13,7 @@
 </script>
 </head>
 <body>
+ 
 <h1 style="text-align: center; font-family: cursive;color: gray; text-decoration:underline;">Booked Ticket's</h1>
 <div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
 <c:set value="${param.userid}" var="uu"/>
@@ -40,7 +43,7 @@
           <td><c:out value="${showBus.pgender}"/></td>
           <td><c:out value="${showBus.totalAmount}"/></td>
         	 <td>
-   			<a href="Appdeletetckt.jsp?Bookedid=${showBus.bookingId}&userid=${param.userid}" onclick="fun()"><button class="btn btn-danger">Cancel</button></a>  
+   			<a href="Appdeletetckt.jsp?Bookedid=${showBus.bookingId}&userid=${param.userid}" onclick="fun()"><button class="btn btn-danger" ">Cancel</button></a>  
 		</td>
 		 <td>
 		<a href="Ticket1.jsp?bookingId=${showBus.bookingId}"><button class="btn btn-success">Download</button></a>

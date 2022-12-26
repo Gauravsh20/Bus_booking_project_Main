@@ -7,8 +7,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -274,6 +276,11 @@ public class UserDAO {
 	
 	
 	//validation User
+	 
+	 
+	 
+	 
+	 
 	
 	public List<User> checkUsers(String user, String psswd) {
 		sessionFactory = SessionHelper.getConnection();
@@ -282,8 +289,15 @@ public class UserDAO {
 		cr.add(Restrictions.eq("username", user));
 		cr.add(Restrictions.eq("password", psswd));
 		List<User> usrLst = cr.list();
+		System.out.println(usrLst);
+		if(usrLst.size()==0) {
+			System.out.println("null");
+			return null;
+		}
+		System.out.println("noy");
 		return usrLst;
 	}
+	
 	
 	public User searchUserByUserId(String userId) {
 		return (User) SessionHelper.getConnection().openSession().createQuery("from User where userid = :userId").setParameter("userId", userId).list().get(0);

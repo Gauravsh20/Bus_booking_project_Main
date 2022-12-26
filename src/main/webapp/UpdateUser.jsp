@@ -3,6 +3,7 @@
 <jsp:include page="AdminUser.jsp"/>
 <body>
       <h1 class="text-center m-3">User Details</h1>
+      <a href="JSF_Files/ShowBus.xhtml" class="btn btn-success ml-5">BacK</a>
      <form method="get" action="UpdateUser.jsp" class="text text-center">
          User Id :
             <input type="text" name="userid" value="${param.id}"/> <br/><br/> 

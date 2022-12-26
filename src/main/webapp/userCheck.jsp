@@ -9,13 +9,15 @@ body{
 background-color: #f2f2f2;
 }
 </style>
+<script type="text/javascript">
+</script>
 
 <h1 id="">User Login</h1>
 <div class="container-fluid">
 <div id="error" style="color:red; text-align: center; font-weight: bolder;"></div>
 <div class="row">
 	<div class="col-6 mt-5 ml-5">
-		<form action="userCheck.jsp" method="post" name="myForm" >
+		<form action="" method="post" name="myForm" >
 			<div class="row">
 				<div class="col-30">
 					<label for="email">User Name :</label>
@@ -40,7 +42,6 @@ background-color: #f2f2f2;
 	
 	</div>		
 </div>
-</div>
 <c:if test="${param.username!=null &&param.password!=null}"/>
 <jsp:useBean id="users" class="Training.BusBookingProject.User"/>
 <jsp:setProperty property="*" name="users"/>
@@ -49,8 +50,15 @@ background-color: #f2f2f2;
 <c:set var="pwd" value="${param.password }"/>
 <c:set var="cnt" value="${dao.checkUsers(user,pwd)}"/>
 <c:forEach  var="ss" items="${dao.checkUsers(user,pwd)}">
+	
 	<c:set var="userid" value="${ss.userid}" scope="session" />
-	<c:redirect url="UserHome.jsp?userid=${userid}"/> 
+	<c:if test="${userid!=null}">
+	<c:redirect url="UserHome.jsp?userid=${userid}"/>
+	</c:if>
+	
+	
 </c:forEach>
+
+
 </body>
 </html>

@@ -22,65 +22,101 @@
               }
             else
               {
-              alert("invalid mailid");
+              alert("Invalid Mail..");
               form["formname:emailaddress"].value=" ";
               return false;
               }
 
   }
+
+
+  function validatephn(form)
+  {
+	  
+      var idstr=form["formname:contactno"].value;
+      var mail = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+       if(idstr.match(mail))
+       {
+            return true;
+              }
+            else
+              {
+              alert("Invalid Phone No..");
+              form["formname:contactno"].value=" ";
+              return false;
+              }
+
+  }
 </script>
+<style>
+
+
+
+h2{
+font-size: medium;
+margin-right:25ex;
+
+
+}
+#details{
+ font-weight: bold;
+
+}
+</style>
+
+
 </head>
 <h:body>
-<h1 class="text text-center text-justify">Add User</h1>
+<h1 class="text text-center text-justify">Create New Account</h1>
 <div class="container-fluid">
 <div class="row">
 	<div class="col-6">
 <h:form class="text text-center" id="formname">
     <div class="row">
 		<div class="col-30">
-		<label for="fname">Full Name :</label>
+		<label for="fname" id="details">Full Name :</label>
 		</div>	
 			<h:inputText value="#{user.fullname}" id="fullname" required="true"
       		requiredMessage="Name is Mandatory" /><br/><br/>
 
 		</div>
-		<h4><h:message for="fullname" style="color :red;"/></h4>
+		<h2><h:message for="fullname" style="color :red;"/></h2>
 
        <div class="row">
 			<div class="col-30">
-				<label for="fname">Contact No :</label>
+				<label for="fname" id="details">Contact No :</label>
 			</div>
-			<h:inputText value="#{user.contactno}" id="contactno" 
-      			validator="#{jsfUserDAO.validatePhnNo}" required="true" requiredMessage="ContactNumber is Mandatory"/> <br/><br/>
+			<h:inputText value="#{user.contactno}" id="contactno" onblur="validatephn(this.form)" 
+      			validator="#{jsfUserDAO.validatePhnNo}" required="true" requiredMessage="Contact Number is Mandatory" /> <br/><br/>
 		</div>
-		<h4><h:message for="contactno" style="color : red;"/></h4>
+		<h2><h:message for="contactno" style="color : red;"/></h2>
 		
   	    <div class="row">
 			<div class="col-30">
-				<label for="fname">Email :</label>
+				<label for="fname" id="details">Email :</label>
 			</div>
 			<h:inputText value="#{user.emailaddress}" id="emailaddress" name="emailaddress"
      			 validator="#{jsfUserDAO.validateEmail}" required="true" requiredMessage="Email is Mandatory"
      			 onblur="validateEmail(this.form)"/><br/><br/>
 			</div>
-			<h4><h:message for="emailaddress" style="color : red;"/></h4>
+			<h2><h:message for="emailaddress" style="color : red;"/></h2>
 			
      		<div class="row">
 			  <div class="col-30">
-				<label for="fname">User Name :</label>
+				<label for="fname" id="details">User ID :</label>
 			</div>
 			<h:inputText value="#{user.username}" id="username" required="true" 
-    			 requiredMessage="Name is Mandatory"/><br/><br/>
+    			 requiredMessage="User ID is Mandatory"/><br/><br/>
     		</div>
-			<h4><h:message for="username" style="color : red;"/></h4>
+			<h2><h:message for="error" id="error" style="color : red;"/></h2>
     		 <div class="row">
 			  <div class="col-30">
-				<label for="fname">Password :</label>
+				<label for="fname" id="details">Password :</label>
 			</div>
-			<h:inputText value="#{user.password}" id="password" 
-    			 validator="#{jsfUserDAO.validatePassword}" required="true" requiredMessage="password is Mandatory"/><br/><br/>
+			<h:inputSecret value="#{user.password}" id="password" 
+    			 validator="#{jsfUserDAO.validatePassword}" required="true" requiredMessage="Password is Mandatory"/><br/><br/>
     		</div>
-<h4><h:message for="password" style="color : red;"/></h4>
+<h2><h:message for="password" style="color : red;"/></h2>
 <h:commandButton value="Save" class="btn btn-primary" action="#{jsfUserDAO.Adduser(user)}" />
 
 </h:form>

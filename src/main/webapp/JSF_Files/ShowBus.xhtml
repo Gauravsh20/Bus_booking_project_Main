@@ -15,14 +15,23 @@
    border-bottom:1px solid #000000;  
    padding:2px;
 }
-.red { color:#cc0000; } 
-.blue { color: #0000cc; }
+.red { color:#cc0000; 
+font-weight: bold;
+} 
+.blue { color: #0000cc; 
+font-weight: bold;}
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
 </style>
 </head>
 
 <h:body>
 	<div class="heading">
-	   <h3 class="text-center"><h:outputText value="Bus Records"/></h3>
+	   <h3 class="text-center"><h:outputText value="Bus's Record"/></h3>
 	    <h:button outcome="AdminHomePage.xhtml?faces-redirect=true" value="Back" class="btn btn-success ml-5" type="button"/>
 			 <h:button outcome="AddBus.xhtml?faces-redirect=true" value="ADD" class="btn btn-primary ml-5" type="button"/>
 	</div>

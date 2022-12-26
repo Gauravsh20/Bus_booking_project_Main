@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Bus Booking System</title>
 <link rel="stylesheet" href="Css/Home.css">
 <link rel="stylesheet" href="Css/bootstrap.css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -49,8 +49,8 @@ padding-top:3ex;
    </div>
 
 <jsp:useBean id="UserDAO" class="Training.BusBookingProject.UserDAO"/>
-
-<c:set var="user" value="${UserDAO.searchUserByUserId(userid) }"/>
+<c:set var="userid" value="#{userId}"/>
+<c:set var="username" value="#{username}"/>
    </div>  
 </div>
 </div>
@@ -63,13 +63,13 @@ padding-top:3ex;
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="UserHome.jsp?userid=${userid}">Home</a>
+          <a class="nav-link active" aria-current="page" href="JSF_Files/UserHome.xhtml?userid=${userid}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ChangePassword.jsp?userid=${param.userid}">Change Password</a>
+          <a class="nav-link" href="ChangePassword.jsp?userid=${userid}">Change Password</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ShowWallet.jsp?userid=${param.userid}">Wallet</a>
+          <a class="nav-link" href="ShowWallet.jsp?userid=${userid}">Wallet</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ShowTickets.jsp?id=${userid}">Tickets</a>
@@ -77,7 +77,7 @@ padding-top:3ex;
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Welcome ${user.fullname}</a>
+          <a class="nav-link disabled" id="username" href="#" tabindex="-1" aria-disabled="true">Welcome ${username}</a>
         </li>
       </ul> 
     </div>

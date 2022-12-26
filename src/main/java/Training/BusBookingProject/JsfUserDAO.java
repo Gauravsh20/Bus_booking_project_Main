@@ -17,6 +17,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
  
 
@@ -164,28 +165,56 @@ public class JsfUserDAO {
 
  
 
+    
+ public Boolean Validation(String UserName) {
+	 
+	 sessionFactory = SessionHelper.getConnection();
+	 Session session = sessionFactory.openSession();
+	 Criteria cr = session.createCriteria(User.class);
+	 cr.add(Restrictions.eq("username",UserName));
+	 List<User>userlist = cr.list();
+	 if( userlist.size()>0) {
+		 return true;
+	 }else {
+		 return false;
+	 }
+ }
+    
+    
     //Add User:
 
 public String Adduser(User user) {
-    String userid = generateUserId();
-    user.setUserid(userid);
     sessionFactory = SessionHelper.getConnection();
     Session session = sessionFactory.openSession();
-    Transaction trans = session.beginTransaction();
-    session.save(user);
-    trans.commit();
-    session.close();
+    String userid = generateUserId();
+    user.setUserid(userid);
+    Boolean checkuser=Validation(user.getUsername());
+    FacesContext context =FacesContext.getCurrentInstance();
+    if(checkuser==true) {
+    	context.addMessage("formname:error", new FacesMessage("Invalid User"));
+         return null;
+    	
+    }else {
+    	
+    	Transaction trans = session.beginTransaction();
+        session.save(user);
+        trans.commit();
+        session.close();
 
-    session = sessionFactory.openSession();
-    Wallet wallet = new Wallet();
-    wallet.setWalletId(generateWalletId());
-    wallet.setWalletAmount(0);
-    wallet.setUserId(userid);
+        session = sessionFactory.openSession();
+        Wallet wallet = new Wallet();
+        wallet.setWalletId(generateWalletId());
+        wallet.setWalletAmount(0);
+        wallet.setUserId(userid);
 
-    session.save(wallet);
-    session.beginTransaction().commit();
-
-    return "User Details added Successfully";
+        session.save(wallet);
+        session.beginTransaction().commit();
+        FacesMessage message = new FacesMessage("Add SuccessFully");
+        context.addMessage("formname", message); 
+        return null;
+    }
+    
+    
 
  
 

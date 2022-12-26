@@ -1,21 +1,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>Login Form</title>
 <jsp:include page="AdminUser.jsp"/>
+<style type="">
+h3{
+color: gray;
+font-family: fantasy;
+font-size: 5ex;
+text-decoration: underline;
+}
 
+</style>
 <body>
-       <h1>Driver Details</h1>
-     <form method="get" action="UpdateDriver.jsp">
+       <h3 class="text-center">Driver Details</h3>
+       <a href="JSF_Files/Show_Driver.xhtml" class="btn btn-success ml-5">BacK</a>
+     <form method="get" action="UpdateDriver.jsp" class="text-center">
          Driver Id :
-            <input type="text" name="driver_id" Value="${param.DId}"/> <br/><br/> 
+            <input type="text" name="driver_id" Value="${param.DId}" required="required"/> <br/><br/> 
          Driver Name :
-            <input type="text" name="driver_name"/> <br/><br/> 
+            <input type="text" name="driver_name" required="required"/> <br/><br/> 
          Driver lic no :
-            <input type="text" name="driver_lic_no"/> <br/><br/>   
+            <input type="text" name="driver_lic_no" required="required"/> <br/><br/>   
          Contact No :
-           	<input type="number" name="contact_no"/> <br/><br/>
+           	<input type="number" name="contact_no" required="required"/> <br/><br/>
           Status :
-           	<input type="text" name="driverstatus" Value="${param.DStatus}"/> <br/><br/>    
-		 <input type="submit" value="Update Driver"/>  
+           	<input type="text" name="driverstatus" Value="${param.DStatus}" required="required"/> <br/><br/>    
+		 <input type="submit" class="btn btn-primary" value="Update Driver"/>  
 				
      </form>
      <c:if test="${param.driver_id!=null}">

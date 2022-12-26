@@ -6,17 +6,54 @@
       <head>
 <title>Bus Booking Sysytem</title>
 <ui:include src="./WebHeader.xhtml"/> 
+<link rel="stylesheet" href="../Css/FormDetail.css"/> 
+<style type="">
+#details{
+font-weight: bolder;
+}
+
+
+</style>
 </head>
 <h:body>
-      <h1 class="text-center">User Authentication Form</h1>
-    <h:form class="text-center mt-5">
-   		 User Name : 
-        <h:inputText value="#{user.username}" id="u" /> <br/><br/>
-        Password : 
-        <h:inputSecret value="#{user.password}" id="p"/> <br/><br/>
-        <h:commandButton id="error" value="Login" action="#{jsfDAO.checkUsers(user)}" />
+      <h1 class="text-center">User Login Form</h1>
+      <div class="container-fluid">
+		<div class="row">
+			<div class="col-6">
+   				 <h:form class="text-center mt-5" id="formname" >
+   				 
+   		 		 <div class="row">
+						<div class="col-30">
+							<label for="fname" id="details">User ID :</label>
+						</div>	
+      			  		 <h:inputText value="#{user.username}" id="u" /> <br/><br/>
+      			  			<h2><h:message for="username" style="color : red;"/></h2>
+      			 </div>
+      			 
+   		 		 <div class="row mt-5">
+						<div class="col-30">
+							<label for="fname" id="details">Password : </label>
+						</div>
+			          <h:inputSecret value="#{user.password}" id="p"/> <br/><br/>
+			       
+			     </div>
+			   
+			       <h:commandButton class="mt-5" value="Login" action="#{jsfDAO.checkUsers(user)}" />
       </h:form>
-       <h:messages id="error" style = "color:red;margin:8px;" />
+			    <h5><h:messages id="error" style = "color:red;margin:8px; font-weight:bolder;" /></h5>       
+			       
+      
+       </div>
+       
+		<div class="col-5">
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<img src="../image/busgif.gif" id="gg" alt="Italian Trulli"/>			
+		</div>	
+       
+       
+       
+       </div>
+       </div>
     </h:body>
 
 

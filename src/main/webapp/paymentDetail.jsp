@@ -13,18 +13,21 @@ background-color:F5BDB1;
 }
 </style>
 <body>
-<c:out value="${userid}"/>
+<c:if test="${param.amount == null}">
+<c:set var="ids" value="${param.userid}"/>
+<c:out value="${ids}"/>
 <c:if test="${param.bookingId!=null}">
 	<jsp:useBean id="booked" class="Training.BusBookingProject.UserDAO"/>
-	<c:set var="walletid" value="${booked.searchWalletByUserId(userid)}"/>	
+   <c:set var="walletid" value="${booked.searchWalletByUserId(ids)}"/> 
+   <c:out value="${walletid.walletId}"/> 
 	<c:forEach var="showBook" items="${booked.SearchBookId(param.bookingId)}">
 		<c:set var="tamt" value="${showBook.totalAmount}"/>
 	</c:forEach>
 </c:if>
 <form action="" method="get" class="text-center mt-5">
 	User ID:
-	<input type="text" name="userId" value="${param.userid}" readonly="readonly" required="required"/><br/><br/>
-	Wallet ID:
+	<input type="text" name="userId" value="${ids}" readonly="readonly" required="required"/><br/><br/>
+	 Wallet ID:
 	<input type="text" name="walletId" value="${walletid.walletId}"/><br/><br/>
 	Wallet Type :
 	<select name="paytype">
@@ -40,16 +43,23 @@ background-color:F5BDB1;
 	<textarea rows="5" cols="25"></textarea><br/><br/>
 	<button type="submit" class="btn btn-primary">Pay</button>
 </form>
-<c:if test="${param.walletId!=null }">
+</c:if>
+<c:if test="${param.amount != null }">
+<c:out value="radhe"/>
 <jsp:useBean id="pay" class="Training.BusBookingProject.PaymentDetail"/>
 <jsp:useBean id="dao" class="Training.BusBookingProject.PaymentDAO"/>
-<jsp:setProperty property="userId" name="pay"/>
-<jsp:setProperty property="walletId" name="pay"/>
-<jsp:setProperty property="bookingId" name="pay"/>
-<jsp:setProperty property="amount" name="pay"/>
-<jsp:setProperty property="paytype" name="pay"/>
-<c:out value="${dao.addPayment(pay)}"/>
-<c:redirect url="ApprvdTickets.jsp?userid=${userid}"/>
+<jsp:setProperty property="*" name="pay"/>
+<c:set var="res" value="${dao.addPayment(pay)}"/>
+<c:if test="${res.equals('ok')}">
+<h4 class="text-center text-danger mt-2"><c:out value="Successfull..."/></h4>
+<c:out value="${ids}"/>
+<c:redirect url="ApprvdTickets.jsp?userid=${param.userId}"/>
+</c:if>
+<c:if test="${res.equals('oknot')}">
+<h4 class="text-center text-danger mt-2"><c:out value="Insufficient Amount..."/></h4>
+<c:out value="${ids}"/>
+</c:if>
+
 </c:if>
 
 
