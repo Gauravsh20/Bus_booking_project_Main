@@ -35,13 +35,23 @@
 <jsp:useBean id="TravelDAO" class="Training.BusBookingProject.TravelscheduleDAO"/>
 
 <form action="">
-	<input type="text" name="answer" placeholder="number of persons"/>
+	<input type="text" name="answer" id="answer" placeholder="number of persons"/>
 	<input type="text" name="scheduleid" value="${param.scheduleid}" readonly="readonly"/>
 	<input type="text" name="userid" value="${param.userid}" readonly="readonly"/>
 	<input type="submit" value="save">
 
 </form>
+
+
 <c:if test="${param.answer != null}">
+<%
+String name="gaurav";
+String no=request.getParameter("answer");
+int number=Integer.parseInt(no);
+if(number!=0){
+for(int i=0;i<number;i++){
+%>
+<c:out value="<%=no %>"/>
 
 <c:set var="tra" value="${param.scheduleid}"/>
 		<c:if test="${param.seatNo == null }">
@@ -119,6 +129,7 @@
     </div>
  			
        </form>
+       <%}} %>
        </div>
       <c:if test="${param.pname != null}">
       <c:set var="travel" value="${TravelDAO.SearchTravelId(tra)}"/>
@@ -137,5 +148,6 @@
     <c:redirect url="ShowTickets.jsp?id=${param.userid}"></c:redirect>
 </c:if>
 </c:if>
+
 </body>
 </html>
